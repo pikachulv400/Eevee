@@ -12,6 +12,8 @@ import com.badlogic.gdx.graphics.g2d.TextureRegion;
 public class AssetLoader {
 
 	public static Texture texture, pokemonTexture;
+	public static TextureRegion EeveeIdle1,EeveeIdle2;
+	public static Animation EeveeAnimation;
 	/*public static TextureRegion logo, zbLogo, bg, grass, bird, birdDown,
 			birdUp, skullUp, skullDown, bar, playButtonUp, playButtonDown,
 			ready, gameOver, highScore, scoreboard, star, noStar, retry;
@@ -21,8 +23,13 @@ public class AssetLoader {
 	private static Preferences prefs;*/
 
 	public static void load() {
-
-		pokemonTexture = new Texture(Gdx.files.internal("data/pokemons.png"));
+		System.out.println(System.getProperty("user.dir"));
+		pokemonTexture = new Texture(Gdx.files.internal("data/EeveeIdle.png"));
+		EeveeIdle1 = new TextureRegion(pokemonTexture, 0, 0, 100, 100);
+		EeveeIdle2 = new TextureRegion(pokemonTexture,100, 0, 100, 100);
+		TextureRegion[] EeveeIdles = { EeveeIdle1, EeveeIdle2};
+		EeveeAnimation = new Animation(0.06f, EeveeIdles);
+		EeveeAnimation.setPlayMode(Animation.PlayMode.LOOP);
 		/*logoTexture.setFilter(TextureFilter.Linear, TextureFilter.Linear);
 
 		logo = new TextureRegion(logoTexture, 0, 0, 512, 114);
