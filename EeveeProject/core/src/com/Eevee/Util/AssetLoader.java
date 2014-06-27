@@ -131,6 +131,15 @@ public class AssetLoader {
 	private static void loadBulbasaur() {
 		// TODO Auto-generated method stub
 		Bulbasaur = new Texture(Gdx.files.internal("data/Bulbasaur.png"));
+		Bulbasaur_1_R_1 = new TextureRegion(Bulbasaur, 0, 66, 72, 66);
+		Bulbasaur_1_R_2 = new TextureRegion(Bulbasaur, 72, 66, 72, 66);
+		Bulbasaur_1_R_3 = new TextureRegion(Bulbasaur, 144, 66, 72, 66);
+		Bulbasaur_1_R_1.flip(true, false);
+		Bulbasaur_1_R_2.flip(true, false);
+		Bulbasaur_1_R_3.flip(true, false);
+		Bulbasaur_1_R = new Animation(0.2f,Bulbasaur_1_R_1, Bulbasaur_1_R_2,Bulbasaur_1_R_3);
+		Bulbasaur_1_R.setPlayMode(Animation.PlayMode.LOOP);
+		
 		Bulbasaur_2_R_1 = new TextureRegion(Bulbasaur, 0, 0, 57, 66);
 		Bulbasaur_2_R_2 = new TextureRegion(Bulbasaur, 57, 0, 57, 66);
 		Bulbasaur_2_R_3 = new TextureRegion(Bulbasaur, 114, 0, 57, 66);
@@ -143,14 +152,82 @@ public class AssetLoader {
 		Bulbasaur_3_R = new Animation(0.2f,Bulbasaur_3_R_1, Bulbasaur_3_R_2,Bulbasaur_3_R_3);
 		Bulbasaur_3_R.setPlayMode(Animation.PlayMode.LOOP);
 		
-		Bulbasaur_1_R_1 = new TextureRegion(Bulbasaur, 0, 66, 72, 66);
-		Bulbasaur_1_R_2 = new TextureRegion(Bulbasaur, 72, 66, 72, 66);
-		Bulbasaur_1_R_3 = new TextureRegion(Bulbasaur, 144, 66, 72, 66);
-		Bulbasaur_1_R_1.flip(true, false);
-		Bulbasaur_1_R_2.flip(true, false);
-		Bulbasaur_1_R_3.flip(true, false);
-		Bulbasaur_1_R = new Animation(0.2f,Bulbasaur_1_R_1, Bulbasaur_1_R_2,Bulbasaur_1_R_3);
-		Bulbasaur_1_R.setPlayMode(Animation.PlayMode.LOOP);
+		Bulbasaur_4_R_1 = new TextureRegion(Bulbasaur, 0, 132, 69, 63);
+		Bulbasaur_4_R_2 = new TextureRegion(Bulbasaur, 69, 132, 69, 63);
+		Bulbasaur_4_R_3 = new TextureRegion(Bulbasaur, 138, 132, 69, 63);
+		Bulbasaur_4_R_1.flip(true, false);
+		Bulbasaur_4_R_2.flip(true, false);
+		Bulbasaur_4_R_3.flip(true, false);
+		Bulbasaur_4_R = new Animation(0.2f,Bulbasaur_4_R_1, Bulbasaur_4_R_2,Bulbasaur_4_R_3);
+		Bulbasaur_4_R.setPlayMode(Animation.PlayMode.LOOP);
+		
+		Bulbasaur_6_R_1 = new TextureRegion(Bulbasaur, 0, 132, 69, 63);
+		Bulbasaur_6_R_2 = new TextureRegion(Bulbasaur, 69, 132, 69, 63);
+		Bulbasaur_6_R_3 = new TextureRegion(Bulbasaur, 138, 132, 69, 63);
+		Bulbasaur_6_R = new Animation(0.2f,Bulbasaur_6_R_1, Bulbasaur_6_R_2,Bulbasaur_6_R_3);
+		Bulbasaur_6_R.setPlayMode(Animation.PlayMode.LOOP);
+		
+		Bulbasaur_7_R_1 = new TextureRegion(Bulbasaur, 0, 264, 66, 66);
+		Bulbasaur_7_R_2 = new TextureRegion(Bulbasaur, 66, 264, 66, 66);
+		Bulbasaur_7_R_3 = new TextureRegion(Bulbasaur, 132, 264, 66, 66);
+		Bulbasaur_7_R_1.flip(true, false);
+		Bulbasaur_7_R_2.flip(true, false);
+		Bulbasaur_7_R_3.flip(true, false);
+		Bulbasaur_7_R = new Animation(0.2f,Bulbasaur_7_R_1, Bulbasaur_7_R_2,Bulbasaur_7_R_3);
+		Bulbasaur_7_R.setPlayMode(Animation.PlayMode.LOOP);
+		
+		Bulbasaur_8_R_1 = new TextureRegion(Bulbasaur, 0, 195, 51, 69);
+		Bulbasaur_8_R_2 = new TextureRegion(Bulbasaur, 51, 195, 51, 69);
+		Bulbasaur_8_R_3 = new TextureRegion(Bulbasaur, 102, 195, 51, 69);
+		Bulbasaur_8_R = new Animation(0.2f,Bulbasaur_8_R_1, Bulbasaur_8_R_2,Bulbasaur_8_R_3);
+		Bulbasaur_8_R.setPlayMode(Animation.PlayMode.LOOP);
+		
+		Bulbasaur_9_R_1 = new TextureRegion(Bulbasaur, 0, 264, 66, 66);
+		Bulbasaur_9_R_2 = new TextureRegion(Bulbasaur, 66, 264, 66, 66);
+		Bulbasaur_9_R_3 = new TextureRegion(Bulbasaur, 132, 264, 66, 66);
+		Bulbasaur_9_R = new Animation(0.2f,Bulbasaur_9_R_1, Bulbasaur_9_R_2,Bulbasaur_9_R_3);
+		Bulbasaur_9_R.setPlayMode(Animation.PlayMode.LOOP);
+		
+		Bulbasaur_1_A_1 = new TextureRegion(Bulbasaur, 207, 330, 69, 63);
+		Bulbasaur_1_A_1.flip(true, false);
+		Bulbasaur_1_A = new  Animation(0.2f,Bulbasaur_1_A_1);
+		Bulbasaur_2_A_1 = new TextureRegion(Bulbasaur, 276, 330, 69, 63);
+		Bulbasaur_2_A = new  Animation(0.2f,Bulbasaur_2_A_1);
+		Bulbasaur_3_A_1 = new TextureRegion(Bulbasaur, 207, 330, 69, 63);
+		Bulbasaur_3_A = new  Animation(0.2f,Bulbasaur_3_A_1);
+		Bulbasaur_4_A_1 = new TextureRegion(Bulbasaur, 138, 330, 69, 63);
+		Bulbasaur_4_A_1.flip(true, false);
+		Bulbasaur_4_A = new  Animation(0.2f,Bulbasaur_4_A_1);
+		Bulbasaur_6_A_1 = new TextureRegion(Bulbasaur, 138, 330, 69, 63);
+		Bulbasaur_6_A = new  Animation(0.2f,Bulbasaur_6_A_1);
+		Bulbasaur_7_A_1 = new TextureRegion(Bulbasaur, 69, 330, 69, 63);
+		Bulbasaur_7_A_1.flip(true, false);
+		Bulbasaur_7_A = new  Animation(0.2f,Bulbasaur_7_A_1);
+		Bulbasaur_8_A_1 = new TextureRegion(Bulbasaur, 0, 330, 69, 63);
+		Bulbasaur_8_A = new  Animation(0.2f,Bulbasaur_8_A_1);
+		Bulbasaur_9_A_1 = new TextureRegion(Bulbasaur, 69, 330, 69, 63);
+		Bulbasaur_9_A = new  Animation(0.2f,Bulbasaur_9_A_1);
+		
+		Bulbasaur_1_H_1 = new TextureRegion(Bulbasaur, 216, 393, 72, 63);
+		Bulbasaur_1_H_1.flip(true, false);
+		Bulbasaur_1_H = new  Animation(0.2f,Bulbasaur_1_H_1);
+		Bulbasaur_2_H_1 = new TextureRegion(Bulbasaur, 288, 393, 72, 63);
+		Bulbasaur_2_H = new  Animation(0.2f,Bulbasaur_2_H_1);
+		Bulbasaur_3_H_1 = new TextureRegion(Bulbasaur, 216, 393, 72, 63);
+		Bulbasaur_3_H = new  Animation(0.2f,Bulbasaur_3_H_1);
+		Bulbasaur_4_H_1 = new TextureRegion(Bulbasaur, 144, 393, 72, 63);
+		Bulbasaur_4_H_1.flip(true, false);
+		Bulbasaur_4_H = new  Animation(0.2f,Bulbasaur_4_H_1);
+		Bulbasaur_6_H_1 = new TextureRegion(Bulbasaur, 144, 393, 72, 63);
+		Bulbasaur_6_H = new  Animation(0.2f,Bulbasaur_6_H_1);
+		Bulbasaur_7_H_1 = new TextureRegion(Bulbasaur, 72, 393, 72, 63);
+		Bulbasaur_7_H_1.flip(true, false);
+		Bulbasaur_7_H = new  Animation(0.2f,Bulbasaur_7_H_1);
+		Bulbasaur_8_H_1 = new TextureRegion(Bulbasaur, 0, 393, 72, 63);
+		Bulbasaur_8_H = new  Animation(0.2f,Bulbasaur_8_A_1);
+		Bulbasaur_9_H_1 = new TextureRegion(Bulbasaur, 72, 393, 72, 63);
+		Bulbasaur_9_H = new  Animation(0.2f,Bulbasaur_9_H_1);
+		
 		
 		
 	}
