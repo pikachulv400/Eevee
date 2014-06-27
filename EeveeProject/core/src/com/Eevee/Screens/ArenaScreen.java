@@ -39,7 +39,7 @@ public class ArenaScreen implements Screen {
     	gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 		time +=Gdx.graphics.getDeltaTime();
 		spriteBatch.begin();
-		spriteBatch.draw(AssetLoader.EeveeAnimation.getKeyFrame(time), 0,
+		spriteBatch.draw(AssetLoader.Bulbasaur_3_R.getKeyFrame(time), 0,
 				0);
 		spriteBatch.end();
 		/*runTime += delta;

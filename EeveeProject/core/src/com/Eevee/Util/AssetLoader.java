@@ -7,29 +7,42 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.Texture.TextureFilter;
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
+import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 
 public class AssetLoader {
 
-	public static Texture texture, pokemonTexture;
-	public static TextureRegion EeveeIdle1,EeveeIdle2;
-	public static Animation EeveeAnimation;
-	/*public static TextureRegion logo, zbLogo, bg, grass, bird, birdDown,
-			birdUp, skullUp, skullDown, bar, playButtonUp, playButtonDown,
-			ready, gameOver, highScore, scoreboard, star, noStar, retry;
-	public static Animation birdAnimation;
-	public static Sound dead, flap, coin, fall;
-	public static BitmapFont font, shadow, whiteFont;
-	private static Preferences prefs;*/
+	public static Texture Bulbasaur;
+	public static TextureRegion Bulbasaur_1_R_1, Bulbasaur_1_R_2, Bulbasaur_1_R_3, 
+								Bulbasaur_2_R_1, Bulbasaur_2_R_2, Bulbasaur_2_R_3,
+								Bulbasaur_3_R_1, Bulbasaur_3_R_2, Bulbasaur_3_R_3,
+								Bulbasaur_4_R_1, Bulbasaur_4_R_2, Bulbasaur_4_R_3,
+								Bulbasaur_6_R_1, Bulbasaur_6_R_2, Bulbasaur_6_R_3,
+								Bulbasaur_7_R_1, Bulbasaur_7_R_2, Bulbasaur_7_R_3,
+								Bulbasaur_8_R_1, Bulbasaur_8_R_2, Bulbasaur_8_R_3,
+								Bulbasaur_9_R_1, Bulbasaur_9_R_2, Bulbasaur_9_R_3,
+								Bulbasaur_1_A_1, Bulbasaur_2_A_1, Bulbasaur_3_A_1, Bulbasaur_4_A_1, Bulbasaur_6_A_1, Bulbasaur_7_A_1, Bulbasaur_8_A_1, Bulbasaur_9_A_1,
+								Bulbasaur_1_H_1, Bulbasaur_2_H_1, Bulbasaur_3_H_1, Bulbasaur_4_H_1, Bulbasaur_6_H_1, Bulbasaur_7_H_1, Bulbasaur_8_H_1, Bulbasaur_9_H_1; 
+	public static Animation Bulbasaur_1_R, Bulbasaur_2_R, Bulbasaur_3_R,
+			Bulbasaur_4_R, Bulbasaur_5_R, Bulbasaur_6_R, Bulbasaur_7_R,
+			Bulbasaur_8_R, Bulbasaur_9_R, Bulbasaur_1_A, Bulbasaur_2_A,
+			Bulbasaur_3_A, Bulbasaur_4_A, Bulbasaur_5_A, Bulbasaur_6_A,
+			Bulbasaur_7_A, Bulbasaur_8_A, Bulbasaur_9_A, Bulbasaur_1_H,
+			Bulbasaur_2_H, Bulbasaur_3_H, Bulbasaur_4_H, Bulbasaur_5_H,
+			Bulbasaur_6_H, Bulbasaur_7_H, Bulbasaur_8_H, Bulbasaur_9_H; // Bulbasaur
+
+	/*
+	 * public static TextureRegion logo, zbLogo, bg, grass, bird, birdDown,
+	 * birdUp, skullUp, skullDown, bar, playButtonUp, playButtonDown, ready,
+	 * gameOver, highScore, scoreboard, star, noStar, retry; public static
+	 * Animation birdAnimation; public static Sound dead, flap, coin, fall;s
+	 * public static BitmapFont font, shadow, whiteFont; private static
+	 * Preferences prefs;
+	 */
 
 	public static void load() {
-		System.out.println(System.getProperty("user.dir"));
-		pokemonTexture = new Texture(Gdx.files.internal("data/EeveeIdle.png"));
-		EeveeIdle1 = new TextureRegion(pokemonTexture, 0, 0, 100, 100);
-		EeveeIdle2 = new TextureRegion(pokemonTexture,100, 0, 100, 100);
-		TextureRegion[] EeveeIdles = { EeveeIdle1, EeveeIdle2};
-		EeveeAnimation = new Animation(0.06f, EeveeIdles);
-		EeveeAnimation.setPlayMode(Animation.PlayMode.LOOP);
+		loadBulbasaur();
+		
 		/*logoTexture.setFilter(TextureFilter.Linear, TextureFilter.Linear);
 
 		logo = new TextureRegion(logoTexture, 0, 0, 512, 114);
@@ -114,19 +127,44 @@ public class AssetLoader {
 			prefs.putInteger("highScore", 0);
 		}*/
 	}
-/*
-	public static void setHighScore(int val) {
-		prefs.putInteger("highScore", val);
-		prefs.flush();
+
+	private static void loadBulbasaur() {
+		// TODO Auto-generated method stub
+		Bulbasaur = new Texture(Gdx.files.internal("data/Bulbasaur.png"));
+		Bulbasaur_2_R_1 = new TextureRegion(Bulbasaur, 0, 0, 57, 66);
+		Bulbasaur_2_R_2 = new TextureRegion(Bulbasaur, 57, 0, 57, 66);
+		Bulbasaur_2_R_3 = new TextureRegion(Bulbasaur, 114, 0, 57, 66);
+		Bulbasaur_2_R = new Animation(0.2f,Bulbasaur_2_R_1, Bulbasaur_2_R_2,Bulbasaur_2_R_3);
+		Bulbasaur_2_R.setPlayMode(Animation.PlayMode.LOOP);
+		
+		Bulbasaur_3_R_1 = new TextureRegion(Bulbasaur, 0, 66, 72, 66);
+		Bulbasaur_3_R_2 = new TextureRegion(Bulbasaur, 72, 66, 72, 66);
+		Bulbasaur_3_R_3 = new TextureRegion(Bulbasaur, 144, 66, 72, 66);
+		Bulbasaur_3_R = new Animation(0.2f,Bulbasaur_3_R_1, Bulbasaur_3_R_2,Bulbasaur_3_R_3);
+		Bulbasaur_3_R.setPlayMode(Animation.PlayMode.LOOP);
+		
+		Bulbasaur_1_R_1 = new TextureRegion(Bulbasaur, 0, 66, 72, 66);
+		Bulbasaur_1_R_2 = new TextureRegion(Bulbasaur, 72, 66, 72, 66);
+		Bulbasaur_1_R_3 = new TextureRegion(Bulbasaur, 144, 66, 72, 66);
+		Bulbasaur_1_R_1.flip(true, false);
+		Bulbasaur_1_R_2.flip(true, false);
+		Bulbasaur_1_R_3.flip(true, false);
+		Bulbasaur_1_R = new Animation(0.2f,Bulbasaur_1_R_1, Bulbasaur_1_R_2,Bulbasaur_1_R_3);
+		Bulbasaur_1_R.setPlayMode(Animation.PlayMode.LOOP);
+		
+		
 	}
 
-	public static int getHighScore() {
-		return prefs.getInteger("highScore");
-	}
-*/
+	/*
+	 * public static void setHighScore(int val) { prefs.putInteger("highScore",
+	 * val); prefs.flush(); }
+	 * 
+	 * public static int getHighScore() { return prefs.getInteger("highScore");
+	 * }
+	 */
 	public static void dispose() {
 		// We must dispose of the texture when we are finished.
-		texture.dispose();
+		Bulbasaur.dispose();
 
 		// Dispose sounds
 	/*	dead.dispose();
