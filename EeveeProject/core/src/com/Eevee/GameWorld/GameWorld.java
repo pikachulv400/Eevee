@@ -1,9 +1,17 @@
 package com.Eevee.GameWorld;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
+import com.Eevee.GameObjects.Pokemon;
+import com.Eevee.GameObjects.Projectile;
 import com.badlogic.gdx.math.Intersector;
 import com.badlogic.gdx.math.Rectangle;
 
 public class GameWorld {
+	private List<Pokemon> pokemonList = Collections.synchronizedList(new ArrayList<Pokemon>());
+	private List<Projectile> projectileList = Collections.synchronizedList(new ArrayList<Projectile>());
 /*
 	private Bird bird;
 	private ScrollHandler scroller;

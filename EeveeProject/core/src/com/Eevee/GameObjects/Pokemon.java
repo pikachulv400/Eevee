@@ -4,12 +4,14 @@ import com.Eevee.PokemonData.Action;
 import com.Eevee.PokemonData.PokeData;
 import com.Eevee.PokemonData.Status;
 import com.Eevee.Util.AssetLoader;
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.math.Vector2;
 
 public class Pokemon extends Entity{
 	
 	private  PokeData stats;
+	private int level;
 	private int maxHp;
 	private int hp; //health point
 	private int maxPp;
@@ -157,6 +159,7 @@ public class Pokemon extends Entity{
 	public Pokemon(Vector2 position, int height, int width, Vector2 velocity,
 			PokeData stats) {
 		super(position, height, width, velocity);
+		this.level=1;
 		this.stats = stats;
 		this.isAlive = true;
 		this.status = Status.NORMAL;
@@ -169,6 +172,7 @@ public class Pokemon extends Entity{
 			int maxStamina, int stamina, int atk, int def, int spAtk,
 			int spDef, int speed) {
 		super(position, height, width, velocity);
+		this.level=1;
 		this.stats = stats;
 		this.maxHp = maxHp;
 		this.hp = hp;

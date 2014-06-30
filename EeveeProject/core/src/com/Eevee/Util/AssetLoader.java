@@ -64,6 +64,7 @@ public class AssetLoader {
 
 	public static void load() {
 		loadBulbasaur();
+		loadCharmander();
 		/*logoTexture.setFilter(TextureFilter.Linear, TextureFilter.Linear);
 
 		logo = new TextureRegion(logoTexture, 0, 0, 512, 114);
@@ -157,6 +158,8 @@ public class AssetLoader {
 	private static void loadBulbasaur() {
 		// TODO Auto-generated method stub
 		Bulbasaur = new Texture(Gdx.files.internal("data/BulbasaurSprite.png"));
+		System.out.println(Bulbasaur.getHeight());
+		System.out.println(Bulbasaur.getWidth());
 		Bulbasaur_1_R_1 = new TextureRegion(Bulbasaur, 210, 105, 105, 105);
 		Bulbasaur_1_R_2 = new TextureRegion(Bulbasaur, 315, 105, 105, 105);
 		Bulbasaur_1_R_3 = new TextureRegion(Bulbasaur, 420, 105, 105, 105);
@@ -289,7 +292,6 @@ public class AssetLoader {
 		AnimationMap.put(new PokemonState(1,2,Action.RUN), Bulbasaur_2_R);
 		AnimationMap.put(new PokemonState(1,3,Action.RUN), Bulbasaur_3_R);
 		AnimationMap.put(new PokemonState(1,4,Action.RUN), Bulbasaur_4_R);
-		AnimationMap.put(new PokemonState(1,5,Action.RUN), Bulbasaur_5_R);
 		AnimationMap.put(new PokemonState(1,6,Action.RUN), Bulbasaur_6_R);
 		AnimationMap.put(new PokemonState(1,7,Action.RUN), Bulbasaur_7_R);
 		AnimationMap.put(new PokemonState(1,8,Action.RUN), Bulbasaur_8_R);
@@ -298,7 +300,6 @@ public class AssetLoader {
 		AnimationMap.put(new PokemonState(1,2,Action.MOVE1), Bulbasaur_2_A);
 		AnimationMap.put(new PokemonState(1,3,Action.MOVE1), Bulbasaur_3_A);
 		AnimationMap.put(new PokemonState(1,4,Action.MOVE1), Bulbasaur_4_A);
-		AnimationMap.put(new PokemonState(1,5,Action.MOVE1), Bulbasaur_5_A);
 		AnimationMap.put(new PokemonState(1,6,Action.MOVE1), Bulbasaur_6_A);
 		AnimationMap.put(new PokemonState(1,7,Action.MOVE1), Bulbasaur_7_A);
 		AnimationMap.put(new PokemonState(1,8,Action.MOVE1), Bulbasaur_8_A);
@@ -307,124 +308,141 @@ public class AssetLoader {
 		AnimationMap.put(new PokemonState(1,2,Action.HURT), Bulbasaur_2_H);
 		AnimationMap.put(new PokemonState(1,3,Action.HURT), Bulbasaur_3_H);
 		AnimationMap.put(new PokemonState(1,4,Action.HURT), Bulbasaur_4_H);
-		AnimationMap.put(new PokemonState(1,5,Action.HURT), Bulbasaur_5_H);
 		AnimationMap.put(new PokemonState(1,6,Action.HURT), Bulbasaur_6_H);
 		AnimationMap.put(new PokemonState(1,7,Action.HURT), Bulbasaur_7_H);
 		AnimationMap.put(new PokemonState(1,8,Action.HURT), Bulbasaur_8_H);
 		AnimationMap.put(new PokemonState(1,9,Action.HURT), Bulbasaur_9_H);
-
+		
+	}
+	private static void loadCharmander(){
 		
 		
 		Charmander = new Texture(Gdx.files.internal("data/CharmanderSprite.png"));
-		Charmander_1_R_1 = new TextureRegion(Charmander, 0, 69, 60, 79);
-		Charmander_1_R_2 = new TextureRegion(Charmander, 60, 69, 60, 79);
-		Charmander_1_R_3 = new TextureRegion(Charmander, 120, 69, 60, 79);
-		Charmander_1_R_4 = new TextureRegion(Charmander, 180, 69, 60, 79);
-		Charmander_1_R_1.flip(true, false);
-		Charmander_1_R_2.flip(true, false);
-		Charmander_1_R_3.flip(true, false);
-		Charmander_1_R_4.flip(true, false);
-		Charmander_1_R = new Animation(0.2f,Charmander_1_R_1, Charmander_1_R_2,Charmander_1_R_3,Charmander_1_R_4);
+		Charmander_1_R_1 = new TextureRegion(Charmander, 0, 106, 106, 106);
+		Charmander_1_R_2 = new TextureRegion(Charmander, 106, 106, 106, 106);
+		Charmander_1_R_3 = new TextureRegion(Charmander, 212, 106, 106, 106);
+		Charmander_1_R = new Animation(0.2f,Charmander_1_R_1, Charmander_1_R_2,Charmander_1_R_3);
 		Charmander_1_R.setPlayMode(Animation.PlayMode.LOOP);
 		
-		Charmander_2_R_1 = new TextureRegion(Charmander, 0, 0, 57, 69);
-		Charmander_2_R_2 = new TextureRegion(Charmander, 57, 0, 57, 69);
-		Charmander_2_R_3 = new TextureRegion(Charmander, 114, 0, 57, 69);
-		Charmander_2_R_4 = new TextureRegion(Charmander, 171, 0, 57, 69);
-		Charmander_2_R = new Animation(0.2f,Charmander_2_R_1, Charmander_2_R_2,Charmander_2_R_3,Charmander_2_R_4);
+		Charmander_2_R_1 = new TextureRegion(Charmander, 0, 0, 106, 106);
+		Charmander_2_R_2 = new TextureRegion(Charmander, 106, 0, 106, 106);
+		Charmander_2_R_3 = new TextureRegion(Charmander, 212, 0, 106, 106);
+		Charmander_2_R = new Animation(0.2f,Charmander_2_R_1, Charmander_2_R_2,Charmander_2_R_3);
 		Charmander_2_R.setPlayMode(Animation.PlayMode.LOOP);
 		
-		Charmander_3_R_1 = new TextureRegion(Charmander, 0, 69, 60, 79);
-		Charmander_3_R_2 = new TextureRegion(Charmander, 60, 69, 60, 79);
-		Charmander_3_R_3 = new TextureRegion(Charmander, 120, 69, 60, 79);
-		Charmander_3_R_4 = new TextureRegion(Charmander, 180, 69, 60, 79);
-		Charmander_3_R = new Animation(0.2f,Charmander_3_R_1, Charmander_3_R_2,Charmander_3_R_3,Charmander_3_R_4);
+		Charmander_3_R_1 = new TextureRegion(Charmander, 0, 106, 106, 106);
+		Charmander_3_R_2 =new TextureRegion(Charmander, 106, 106, 106, 106);
+		Charmander_3_R_3 = new TextureRegion(Charmander, 212, 106, 106, 106);
+		Charmander_3_R_1.flip(true, false);
+		Charmander_3_R_2.flip(true, false);
+		Charmander_3_R_3.flip(true, false);
+		Charmander_3_R = new Animation(0.2f,Charmander_3_R_1, Charmander_3_R_2,Charmander_3_R_3);
 		Charmander_3_R.setPlayMode(Animation.PlayMode.LOOP);
 		
-		Charmander_4_R_1 = new TextureRegion(Charmander, 0, 148, 63, 80);
-		Charmander_4_R_2 = new TextureRegion(Charmander, 63, 148, 63, 80);
-		Charmander_4_R_3 = new TextureRegion(Charmander, 126, 148, 63, 80);
-		Charmander_4_R_4 = new TextureRegion(Charmander, 189, 148, 63,80);
-		Charmander_4_R_1.flip(true, false);
-		Charmander_4_R_2.flip(true, false);
-		Charmander_4_R_3.flip(true, false);
-		Charmander_4_R_4.flip(true, false);
-		Charmander_4_R = new Animation(0.2f,Charmander_4_R_1, Charmander_4_R_2,Charmander_4_R_3,Charmander_4_R_4);
+		Charmander_4_R_1 = new TextureRegion(Charmander, 636, 0, 106, 106);
+		Charmander_4_R_2 = new TextureRegion(Charmander, 742, 0, 106, 106);
+		Charmander_4_R_3 = new TextureRegion(Charmander, 848, 0, 106, 106);
+		Charmander_4_R = new Animation(0.2f,Charmander_4_R_1, Charmander_4_R_2,Charmander_4_R_3);
 		Charmander_4_R.setPlayMode(Animation.PlayMode.LOOP);
 		
-		Charmander_6_R_1 = new TextureRegion(Charmander, 0, 148, 63, 80);
-		Charmander_6_R_2 = new TextureRegion(Charmander, 63, 148, 63, 80);
-		Charmander_6_R_3 = new TextureRegion(Charmander, 126, 148, 63, 80);
-		Charmander_6_R_4 = new TextureRegion(Charmander, 189, 148, 63, 80);
-		Charmander_6_R = new Animation(0.2f,Charmander_6_R_1, Charmander_6_R_2,Charmander_6_R_3,Charmander_6_R_4);
+		Charmander_6_R_1 = new TextureRegion(Charmander, 636, 0, 106, 106);
+		Charmander_6_R_2 = new TextureRegion(Charmander, 742, 0, 106, 106);
+		Charmander_6_R_3 = new TextureRegion(Charmander, 848, 0, 106, 106);
+		Charmander_6_R_1.flip(true, false);
+		Charmander_6_R_2.flip(true, false);
+		Charmander_6_R_3.flip(true, false);
+		Charmander_6_R = new Animation(0.2f,Charmander_6_R_1, Charmander_6_R_2,Charmander_6_R_3);
 		Charmander_6_R.setPlayMode(Animation.PlayMode.LOOP);
 		
-		Charmander_7_R_1 = new TextureRegion(Charmander, 0, 230, 60, 82);
-		Charmander_7_R_2 = new TextureRegion(Charmander, 60, 230, 60, 82);
-		Charmander_7_R_3 = new TextureRegion(Charmander, 120, 230, 60, 82);
-		Charmander_7_R_4 = new TextureRegion(Charmander, 180, 230, 60, 82);
-		Charmander_7_R_1.flip(true, false);
-		Charmander_7_R_2.flip(true, false);
-		Charmander_7_R_3.flip(true, false);
-		Charmander_7_R_4.flip(true, false);
-		Charmander_7_R = new Animation(0.2f,Charmander_7_R_1, Charmander_7_R_2,Charmander_7_R_3,Charmander_7_R_4);
+		Charmander_7_R_1 = new TextureRegion(Charmander, 318, 106, 106, 106);
+		Charmander_7_R_2 = new TextureRegion(Charmander, 424, 106, 106, 106);
+		Charmander_7_R_3 = new TextureRegion(Charmander, 530, 106, 106, 106);
+		Charmander_7_R = new Animation(0.2f,Charmander_7_R_1, Charmander_7_R_2,Charmander_7_R_3);
 		Charmander_7_R.setPlayMode(Animation.PlayMode.LOOP);
 		
-		Charmander_8_R_1 = new TextureRegion(Charmander, 264, 148, 45, 82);
-		Charmander_8_R_2 = new TextureRegion(Charmander, 310, 148, 45, 82);
-		Charmander_8_R_3 = new TextureRegion(Charmander, 355, 148, 45, 82);
-		Charmander_8_R_4 = new TextureRegion(Charmander, 400, 148, 45, 82);
-		Charmander_8_R = new Animation(0.2f,Charmander_8_R_1,Charmander_8_R_2,Charmander_8_R_3,Charmander_8_R_4);
+		Charmander_8_R_1 = new TextureRegion(Charmander, 318, 0, 106, 106);
+		Charmander_8_R_2 = new TextureRegion(Charmander, 424, 0, 106, 106);
+		Charmander_8_R_3 = new TextureRegion(Charmander, 530, 0, 106, 106);
+		Charmander_8_R = new Animation(0.2f,Charmander_8_R_1,Charmander_8_R_2,Charmander_8_R_3);
 		Charmander_8_R.setPlayMode(Animation.PlayMode.LOOP);
 		
-		Charmander_9_R_1 = new TextureRegion(Charmander, 0, 230, 60, 82);
-		Charmander_9_R_2 = new TextureRegion(Charmander, 60, 230, 60, 82);
-		Charmander_9_R_3 = new TextureRegion(Charmander, 120, 230, 60, 82);
-		Charmander_9_R_4 = new TextureRegion(Charmander, 180, 230, 60, 82);
-		Charmander_9_R = new Animation(0.2f,Charmander_9_R_1, Charmander_9_R_2,Charmander_9_R_3,Charmander_9_R_4);
+		Charmander_9_R_1 = new TextureRegion(Charmander, 318, 106, 106, 106);
+		Charmander_9_R_2 = new TextureRegion(Charmander, 424, 106, 106, 106);
+		Charmander_9_R_3 = new TextureRegion(Charmander, 530, 106, 106, 106);
+		Charmander_9_R_1.flip(true, false);
+		Charmander_9_R_2.flip(true, false);
+		Charmander_9_R_3.flip(true, false);
+		Charmander_9_R = new Animation(0.2f,Charmander_9_R_1, Charmander_9_R_2,Charmander_9_R_3);
 		Charmander_9_R.setPlayMode(Animation.PlayMode.LOOP);
+		//todo hurt
 		
-		Charmander_1_A_1 = new TextureRegion(Charmander, 207, 312, 69, 87);
+		Charmander_1_A_1 = new TextureRegion(Charmander, 207, 312, 106, 106);
 		Charmander_1_A_1.flip(true, false);
 		Charmander_1_A = new  Animation(0.2f,Charmander_1_A_1);
-		Charmander_2_A_1 = new TextureRegion(Charmander, 278, 312, 69, 87);
+		Charmander_2_A_1 = new TextureRegion(Charmander, 278, 312, 106, 106);
 		Charmander_2_A = new  Animation(0.2f,Charmander_2_A_1);
-		Charmander_3_A_1 = new TextureRegion(Charmander, 207, 312, 69, 87);
+		Charmander_3_A_1 = new TextureRegion(Charmander, 207, 312, 106, 106);
 		Charmander_3_A = new  Animation(0.2f,Charmander_3_A_1);
-		Charmander_4_A_1 = new TextureRegion(Charmander, 138, 312, 69, 87);
+		Charmander_4_A_1 = new TextureRegion(Charmander, 138, 312, 106, 106);
 		Charmander_4_A_1.flip(true, false);
 		Charmander_4_A = new  Animation(0.2f,Charmander_4_A_1);
-		Charmander_6_A_1 = new TextureRegion(Charmander, 138, 312, 69, 87);
+		Charmander_6_A_1 = new TextureRegion(Charmander, 138, 312, 106, 106);
 		Charmander_6_A = new  Animation(0.2f,Charmander_6_A_1);
-		Charmander_7_A_1 = new TextureRegion(Charmander, 69, 312, 69, 87);
+		Charmander_7_A_1 = new TextureRegion(Charmander, 69, 312, 106, 106);
 		Charmander_7_A_1.flip(true, false);
 		Charmander_7_A = new  Animation(0.2f,Charmander_7_A_1);
-		Charmander_8_A_1 = new TextureRegion(Charmander, 0, 312, 69, 87);
+		Charmander_8_A_1 = new TextureRegion(Charmander, 0, 312, 106, 106);
 		Charmander_8_A = new  Animation(0.2f,Charmander_8_A_1);
-		Charmander_9_A_1 = new TextureRegion(Charmander, 69, 312, 69, 87);
+		Charmander_9_A_1 = new TextureRegion(Charmander, 69, 312, 106, 106);
 		Charmander_9_A = new  Animation(0.2f,Charmander_9_A_1);
 		
-		Charmander_1_H_1 = new TextureRegion(Charmander, 207, 399, 69, 87);
+		Charmander_1_H_1 = new TextureRegion(Charmander, 207, 399, 106, 106);
 		Charmander_1_H_1.flip(true, false);
 		Charmander_1_H = new  Animation(0.2f,Charmander_1_H_1);
-		Charmander_2_H_1 = new TextureRegion(Charmander, 278, 399, 69, 87);
+		Charmander_2_H_1 = new TextureRegion(Charmander, 278, 399, 106, 106);
 		Charmander_2_H = new  Animation(0.2f,Charmander_2_H_1);
-		Charmander_3_H_1 = new TextureRegion(Charmander, 207, 399, 69, 87);
+		Charmander_3_H_1 = new TextureRegion(Charmander, 207, 399, 106, 106);
 		Charmander_3_H = new  Animation(0.2f,Charmander_3_H_1);
-		Charmander_4_H_1 = new TextureRegion(Charmander, 138, 399, 69, 87);
+		Charmander_4_H_1 = new TextureRegion(Charmander, 138, 399, 106, 106);
 		Charmander_4_H_1.flip(true, false);
 		Charmander_4_H = new  Animation(0.2f,Charmander_4_H_1);
-		Charmander_6_H_1 = new TextureRegion(Charmander, 138, 399, 69, 87);
+		Charmander_6_H_1 = new TextureRegion(Charmander, 138, 399, 106, 106);
 		Charmander_6_H = new  Animation(0.2f,Charmander_6_H_1);
-		Charmander_7_H_1 = new TextureRegion(Charmander, 69, 399, 69, 87);
+		Charmander_7_H_1 = new TextureRegion(Charmander, 69, 399, 106, 106);
 		Charmander_7_H_1.flip(true, false);
 		Charmander_7_H = new  Animation(0.2f,Charmander_7_H_1);
-		Charmander_8_H_1 = new TextureRegion(Charmander, 0, 399, 69, 87);
+		Charmander_8_H_1 = new TextureRegion(Charmander, 0, 399, 106, 106);
 		Charmander_8_H = new  Animation(0.2f,Charmander_8_A_1);
-		Charmander_9_H_1 = new TextureRegion(Charmander, 69, 399, 69, 87);
+		Charmander_9_H_1 = new TextureRegion(Charmander, 69, 399, 106, 106);
 		Charmander_9_H = new  Animation(0.2f,Charmander_9_H_1);
 		
-		
+		AnimationMap.put(new PokemonState(4,1,Action.RUN), Charmander_1_R);
+		AnimationMap.put(new PokemonState(4,2,Action.RUN), Charmander_2_R);
+		AnimationMap.put(new PokemonState(4,3,Action.RUN), Charmander_3_R);
+		AnimationMap.put(new PokemonState(4,4,Action.RUN), Charmander_4_R);
+		AnimationMap.put(new PokemonState(4,5,Action.RUN), Charmander_5_R);
+		AnimationMap.put(new PokemonState(4,6,Action.RUN), Charmander_6_R);
+		AnimationMap.put(new PokemonState(4,7,Action.RUN), Charmander_7_R);
+		AnimationMap.put(new PokemonState(4,8,Action.RUN), Charmander_8_R);
+		AnimationMap.put(new PokemonState(4,9,Action.RUN), Charmander_9_R);
+		AnimationMap.put(new PokemonState(4,1,Action.MOVE1), Charmander_1_A);
+		AnimationMap.put(new PokemonState(4,2,Action.MOVE1), Charmander_2_A);
+		AnimationMap.put(new PokemonState(4,3,Action.MOVE1), Charmander_3_A);
+		AnimationMap.put(new PokemonState(4,4,Action.MOVE1), Charmander_4_A);
+		AnimationMap.put(new PokemonState(4,5,Action.MOVE1), Charmander_5_A);
+		AnimationMap.put(new PokemonState(4,6,Action.MOVE1), Charmander_6_A);
+		AnimationMap.put(new PokemonState(4,7,Action.MOVE1), Charmander_7_A);
+		AnimationMap.put(new PokemonState(4,8,Action.MOVE1), Charmander_8_A);
+		AnimationMap.put(new PokemonState(4,9,Action.MOVE1), Charmander_9_A);
+		AnimationMap.put(new PokemonState(4,1,Action.HURT), Charmander_1_H);
+		AnimationMap.put(new PokemonState(4,2,Action.HURT), Charmander_2_H);
+		AnimationMap.put(new PokemonState(4,3,Action.HURT), Charmander_3_H);
+		AnimationMap.put(new PokemonState(4,4,Action.HURT), Charmander_4_H);
+		AnimationMap.put(new PokemonState(4,5,Action.HURT), Charmander_5_H);
+		AnimationMap.put(new PokemonState(4,6,Action.HURT), Charmander_6_H);
+		AnimationMap.put(new PokemonState(4,7,Action.HURT), Charmander_7_H);
+		AnimationMap.put(new PokemonState(4,8,Action.HURT), Charmander_8_H);
+		AnimationMap.put(new PokemonState(4,9,Action.HURT), Charmander_9_H);
 		
 	}
 

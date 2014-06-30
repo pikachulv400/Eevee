@@ -26,7 +26,8 @@ public class ArenaScreen implements Screen,InputProcessor {
 	private float time ;
 	private float skillDuration = 60;
 	private float cooldown = 100;
-	private Pokemon bulbasaur = new Pokemon(new Vector2(0,0),0,0,new Vector2(0,0),PokeData.BULBASAUR);
+	private Pokemon charmander = new Pokemon(new Vector2(0,0),0,0,new Vector2(0,0),PokeData.CHARMANDER);
+	private Pokemon bulbasaur = new Pokemon(new Vector2(50,50),0,0,new Vector2(0,0),PokeData.BULBASAUR);
 	boolean MovingUp = false,MovingDown = false,MovingLeft = false,MovingRight = false,Attacking = false,isHit=false;
 
 	
@@ -54,6 +55,8 @@ public class ArenaScreen implements Screen,InputProcessor {
 		UpdatePokemon();
 		spriteBatch.draw(bulbasaur.getCurrentAnimation().getKeyFrame(time), bulbasaur.getPosition().x,
 				bulbasaur.getPosition().y);
+		spriteBatch.draw(charmander.getCurrentAnimation().getKeyFrame(time), charmander.getPosition().x,
+				charmander.getPosition().y);
 		spriteBatch.end();
 		/*runTime += delta;
 		world.update(delta);
@@ -219,22 +222,22 @@ public class ArenaScreen implements Screen,InputProcessor {
 			}
 			if (MovingDown && MovingLeft) {
 				bulbasaur.setDirection(1);// HandleMovement();
-				bulbasaur.setVelocity(new Vector2(-0.66f,-0.66f));
+				bulbasaur.setVelocity(new Vector2(-0.7071f,-0.7071f));
 				shouldMove = 0;
 			}
 			if (MovingUp && MovingLeft) {
 				bulbasaur.setDirection(7);// HandleMovement();
-				bulbasaur.setVelocity(new Vector2(-0.66f,0.66f));
+				bulbasaur.setVelocity(new Vector2(-0.7071f,0.7071f));
 				shouldMove = 0;
 			}
 			if (MovingUp && MovingRight) {
 				bulbasaur.setDirection(9);// HandleMovement();
-				bulbasaur.setVelocity(new Vector2(0.66f,0.66f));
+				bulbasaur.setVelocity(new Vector2(0.7071f,0.7071f));
 				shouldMove = 0;
 			}
 			if (MovingDown && MovingRight) {
 				bulbasaur.setDirection(3);// HandleMovement();
-				bulbasaur.setVelocity(new Vector2(0.66f,-0.66f));
+				bulbasaur.setVelocity(new Vector2(0.7071f,-0.7071f));
 				shouldMove = 0;
 			}
 
