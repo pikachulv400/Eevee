@@ -3,15 +3,15 @@ package com.Eevee.Util;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.Eevee.GameWorld.GameWorld;
 import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.InputProcessor;
 
 
 public class InputHandler implements InputProcessor {
-	private boolean MovingUp,MovingDown,MovingLeft,MovingRight,Moving = false;
-/*	private Bird myBird;
+	private boolean MovingUp,MovingDown,MovingLeft,MovingRight,Moving,Attacking = false;
 	private GameWorld myWorld;
-
+/*
 	private List<SimpleButton> menuButtons;
 
 	private SimpleButton playButton;
