@@ -19,6 +19,11 @@ import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType;
 
 public class GameRenderer {
+	
+	private GameWorld world;
+	private GameRenderer renderer;
+	private float runTime;
+
 /*
 	private GameWorld myWorld;
 	private OrthographicCamera cam;

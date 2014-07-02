@@ -1,6 +1,6 @@
 package com.Eevee;
 
-import com.Eevee.Screens.ArenaScreen;
+import com.Eevee.Screens.TestScreen;
 import com.Eevee.Util.AssetLoader;
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
@@ -16,7 +16,7 @@ public class EeveeProjectGame extends Game {
 	@Override
 	public void create() {
 		AssetLoader.load();
-		setScreen(new ArenaScreen());
+		setScreen(new TestScreen());
 	}
 
 	@Override
@@ -25,3 +25,6 @@ public class EeveeProjectGame extends Game {
 		AssetLoader.dispose();
 	}
 }
+
+
+
