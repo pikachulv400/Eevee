@@ -4,7 +4,7 @@ import java.net.*;
 import java.io.*;
 import java.util.*;
 
-import com.Eevee.net.Room;
+import com.Eevee.net.pack.MasterPacket;
 
 public class MasterServer{
 
@@ -33,6 +33,10 @@ public class MasterServer{
 	}
 	public void HandleCreate(int CreatorID,String CreatorIP,int RoomNumber){
 		rooms.add(new Room(CreatorID,CreatorIP,RoomNumber));
+	}
+	public void BroadCastToAll(MasterPacket masterPacket)
+	{
+		//
 	}
 }
 /*

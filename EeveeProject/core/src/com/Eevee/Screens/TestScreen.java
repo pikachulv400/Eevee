@@ -13,7 +13,12 @@ import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
+import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
+import com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType;
+import com.badlogic.gdx.math.Ellipse;
 import com.badlogic.gdx.math.Matrix3;
+import com.badlogic.gdx.math.Polygon;
+import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.math.Vector3;
 import com.badlogic.gdx.utils.Array;
@@ -22,6 +27,10 @@ import com.badlogic.gdx.utils.Array;
 public class TestScreen implements Screen,InputProcessor {
 
 	private SpriteBatch 			spriteBatch = new SpriteBatch();
+	Polygon bulbapoly = new Polygon(new float[]{0.0559895820915699f*850-200,0.9674479365348816f*850-200,0.0442708320915699f*850-200,0.9557291865348816f*850-200,0.0325520820915699f*850-200,0.9166666865348816f*850-200,0.046875f*850-200,0.8997395634651184f*850-200,0.0755208358168602f*850-200,0.89453125f*850-200,0.0911458358168602f*850-200,0.9010416865348816f*850-200,0.0911458358168602f*850-200,0.9010416865348816f*850-200,0.1028645858168602f*850-200,0.9205729365348816f*850-200,0.0911458358168602f*850-200,0.9518229365348816f*850-200,0.0794270858168602f*850-200,0.9674479365348816f*850-200,0.0638020858168602f*850-200,0.9713541865348816f*850-200,0.0559895820915699f*850-200,0.9674479365348816f*850-200});
+	Rectangle bounds = new Rectangle(0, 0, 70, 20);
+	Polygon polygon = new Polygon(new float[]{0,0,bounds.width,0,bounds.width,bounds.height,0,bounds.height,0,0});
+	Ellipse ellipse ;
 	private int						WIDTH,HEIGHT;
 	private int shouldMove,shouldAttack,shouldHit;
 	private float time ;
@@ -31,11 +40,13 @@ public class TestScreen implements Screen,InputProcessor {
 	private Pokemon bulbasaur = new Pokemon(new Vector2(50,50),0,0,new Vector2(0,0),PokeData.BULBASAUR);
 	boolean MovingUp = false,MovingDown = false,MovingLeft = false,MovingRight = false,Attacking = false,isHit=false;
 	private OrthographicCamera camera;
+	ShapeRenderer shapeRenderer = new ShapeRenderer();
 	
 	// This is the constructor, not the class declaration
 	public TestScreen() {
+		
 		camera = new OrthographicCamera(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
-		 camera.position.set(bulbasaur.getPosition().x+52.5f,bulbasaur.getPosition().y+52.5f, 0f);
+		camera.position.set(bulbasaur.getPosition().x,bulbasaur.getPosition().y, 0f);
 		Gdx.input.setInputProcessor(this);
 		/*float screenWidth = Gdx.graphics.getWidth();
 		float screenHeight = Gdx.graphics.getHeight();
@@ -51,18 +62,28 @@ public class TestScreen implements Screen,InputProcessor {
 
 	@Override
 	public void render(float delta){
-		System.out.println(camera.position.x +":"+camera.position.y);
+		Vector2 EllipsePosition = bulbasaur.getPosition();
+		ellipse = new Ellipse(EllipsePosition.x-35.5f,EllipsePosition.y-35.5f,70,30);
+
+		System.out.println(bulbasaur.getPosition());
 		GL20 gl = Gdx.graphics.getGL20();
     	gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 		time +=Gdx.graphics.getDeltaTime();
 		spriteBatch.setProjectionMatrix(camera.combined);
+		shapeRenderer.begin(ShapeType.Line);
+		shapeRenderer.setProjectionMatrix(camera.combined);
+	    shapeRenderer.setColor(1, 0, 0, 1);
+        shapeRenderer.ellipse(ellipse.x, ellipse.y, ellipse.width, ellipse.height);
+        shapeRenderer.end();
 		spriteBatch.begin();
-		UpdatePokemon();
-		spriteBatch.draw(bulbasaur.getCurrentAnimation().getKeyFrame(time), bulbasaur.getPosition().x,
-				bulbasaur.getPosition().y);
+		spriteBatch.draw(bulbasaur.getCurrentAnimation().getKeyFrame(time), bulbasaur.getPosition().x-bulbasaur.getCurrentAnimation().getKeyFrame(time).getRegionWidth()/2,
+				bulbasaur.getPosition().y-bulbasaur.getCurrentAnimation().getKeyFrame(time).getRegionWidth()/2);
 		spriteBatch.draw(charmander.getCurrentAnimation().getKeyFrame(time), charmander.getPosition().x,
 				charmander.getPosition().y);
 		spriteBatch.end();
+
+
+        UpdatePokemon();
 		/*runTime += delta;
 		world.update(delta);
 		renderer.render(delta, runTime);*/
@@ -228,22 +249,22 @@ public class TestScreen implements Screen,InputProcessor {
 			}
 			if (MovingDown && MovingLeft) {
 				bulbasaur.setDirection(1);// HandleMovement();
-				bulbasaur.setVelocity(new Vector2(-0.7071f,-0.7071f));
+				bulbasaur.setVelocity(new Vector2(-0.66f,-0.66f));
 				shouldMove = 0;
 			}
 			if (MovingUp && MovingLeft) {
 				bulbasaur.setDirection(7);// HandleMovement();
-				bulbasaur.setVelocity(new Vector2(-0.7071f,0.7071f));
+				bulbasaur.setVelocity(new Vector2(-0.66f,0.66f));
 				shouldMove = 0;
 			}
 			if (MovingUp && MovingRight) {
 				bulbasaur.setDirection(9);// HandleMovement();
-				bulbasaur.setVelocity(new Vector2(0.7071f,0.7071f));
+				bulbasaur.setVelocity(new Vector2(0.66f,0.66f));
 				shouldMove = 0;
 			}
 			if (MovingDown && MovingRight) {
 				bulbasaur.setDirection(3);// HandleMovement();
-				bulbasaur.setVelocity(new Vector2(0.7071f,-0.7071f));
+				bulbasaur.setVelocity(new Vector2(0.66f,-0.66f));
 				shouldMove = 0;
 			}
 

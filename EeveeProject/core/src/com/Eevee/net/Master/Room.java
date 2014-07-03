@@ -1,4 +1,4 @@
-package com.Eevee.net;
+package com.Eevee.net.Master;
 
 import java.util.ArrayList;
 

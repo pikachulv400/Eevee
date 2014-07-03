@@ -1,12 +1,12 @@
 package com.Eevee.net.pack;
 
-import com.Eevee.net.Master.MasterClient;
-import com.Eevee.net.Master.MasterServer;
-
-
 public class MasterPacket00ACKLogin extends MasterPacket {
 
-    private String username;
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = -6468280202691788036L;
+	private String username;
 
 
     public MasterPacket00ACKLogin(String username) {
