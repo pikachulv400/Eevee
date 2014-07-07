@@ -18,6 +18,7 @@ public class AssetLoader {
 	public static Texture Bulbasaur,Charmander;
 	public static int bulbasaurSize = 105;
 	public static int charmanderSize = 106;
+	public static Texture Background1;
 	public static TextureRegion[][] BulbasaurRegions;
 	public static TextureRegion CharmanderRegions[];
 	public static TextureRegion tempRegions[] = new TextureRegion[10];
@@ -79,6 +80,7 @@ public class AssetLoader {
 	public static void load() {
 		loadBulbasaur();
 		loadCharmander();
+		Background1 = new Texture(Gdx.files.internal("data/background1.png"));
 		/*logoTexture.setFilter(TextureFilter.Linear, TextureFilter.Linear);
 
 		logo = new TextureRegion(logoTexture, 0, 0, 512, 114);

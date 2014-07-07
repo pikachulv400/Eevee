@@ -9,20 +9,23 @@ public class Projectile extends Entity {
 	private int type;
 	private float timeToDie;
 	private HitEffect hitEffect;
+	private Bound bound;
 
-	public Projectile(Vector2 position, int height, int width,
-			Vector2 velocity, int fromPlayerID, int spAtk, int type,
-			float timeToDie, HitEffect hitEffect) {
-		super(position, height, width, velocity);
+	public Projectile(Vector2 position, Vector2 velocity,int height, int width,
+			 int fromPlayerID, int spAtk, int type,
+			float timeToDie) {
+		super(position,velocity, height, width);
 		// TODO Auto-generated constructor stub
 		this.fromPlayerID = fromPlayerID;
 		this.spAtk = spAtk;
 		this.type = type;
 		this.timeToDie = timeToDie;
-		this.hitEffect = hitEffect;
 	}
 
 	public boolean update(float delta) {
-		return false;
+		timeToDie--;
+		this.getPosition().add(this.getVelocity());
+		return timeToDie>=0;
 	}
+	
 }

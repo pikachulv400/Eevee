@@ -4,8 +4,9 @@ import com.Eevee.GameObjects.Pokemon;
 import com.Eevee.GameWorld.GameRenderer;
 import com.Eevee.GameWorld.GameWorld;
 import com.Eevee.PokemonData.Action;
-import com.Eevee.PokemonData.PokeData;
+import com.Eevee.PokemonData.PokemonName;
 import com.Eevee.Util.AssetLoader;
+import com.Eevee.Util.InputHandler;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.InputProcessor;
 import com.badlogic.gdx.Screen;
@@ -23,6 +24,8 @@ import com.badlogic.gdx.utils.Array;
 public class ArenaScreen implements Screen{
 	private GameWorld world;
 	private GameRenderer renderer;
+	private Pokemon bulbasaur = new Pokemon(new Vector2(50, 50), new Vector2(0, 0),106, 106, PokemonName.BULBASAUR);
+//	private InputHandler inputHandler = new InputHandler(bulbasaur, this);
 	private float runTime;
 
 	// This is the constructor, not the class declaration
@@ -37,6 +40,9 @@ public class ArenaScreen implements Screen{
 
 	@Override
 	public void render(float delta){
+		//renderPokemons();
+		//renderProjectiles();
+		//inputHandler.getInputUpdater().update();
 	/*	GL20 gl = Gdx.graphics.getGL20();
     	gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 		time +=Gdx.graphics.getDeltaTime();

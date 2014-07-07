@@ -1,7 +1,9 @@
 package com.Eevee.GameObjects;
 
+import com.Eevee.MoveMachines.Move;
 import com.Eevee.PokemonData.Action;
-import com.Eevee.PokemonData.PokeData;
+import com.Eevee.PokemonData.PokeDex;
+import com.Eevee.PokemonData.PokemonName;
 import com.Eevee.PokemonData.Status;
 import com.Eevee.Util.AssetLoader;
 import com.badlogic.gdx.Gdx;
@@ -10,7 +12,7 @@ import com.badlogic.gdx.math.Vector2;
 
 public class Pokemon extends Entity {
 
-	private PokeData stats;
+	private PokemonName name;
 	private int direction; // 1-9
 	private Status status;
 	private Action action;
@@ -27,13 +29,18 @@ public class Pokemon extends Entity {
 	private int spDef;
 	private int speed;
 	private boolean isAlive;
+	private Move move1;
+	private Move move2;
+	private Move move3;
+	private Move move4;
+	private Bound bound;
 
-	public PokeData getStats() {
-		return stats;
+	public PokemonName getName() {
+		return name;
 	}
 
 	public boolean update(float delta) {
-		
+
 		if (hp <= 0) {
 			isAlive = false;
 		}
@@ -65,17 +72,15 @@ public class Pokemon extends Entity {
 				break;
 			}
 			this.getVelocity().scl(delta).scl(65);
+		} else {
+			this.setVelocity(new Vector2(0, 0));
 		}
-		else
-			{
-			this.setVelocity(new Vector2(0,0));
-			}
 		this.getPosition().add(this.getVelocity());
 		return isAlive;
 	}
 
-	public void setStats(PokeData stats) {
-		this.stats = stats;
+	public void setName(PokemonName name) {
+		this.name = name;
 	}
 
 	public int getMaxHp() {
@@ -195,28 +200,27 @@ public class Pokemon extends Entity {
 	}
 
 	public void setAction(Action action) {
-		System.out.println(action);
 		this.action = action;
 	}
 
-	public Pokemon(Vector2 position, int height, int width, Vector2 velocity,
-			PokeData stats) {
-		super(position, height, width, velocity);
+	public Pokemon(Vector2 position, Vector2 velocity, 
+			int height, int width, PokemonName name) {
+		super(position, velocity, height, width);
 		this.level = 1;
-		this.stats = stats;
+		this.name = name;
 		this.isAlive = true;
 		this.status = Status.NORMAL;
 		this.action = Action.RUN;
 		this.direction = 2;
 	}
 
-	public Pokemon(Vector2 position, int height, int width, Vector2 velocity,
-			PokeData stats, int maxHp, int hp, int maxPp, int pp,
-			int maxStamina, int stamina, int atk, int def, int spAtk,
-			int spDef, int speed) {
-		super(position, height, width, velocity);
+	public Pokemon(Vector2 position, Vector2 velocity, 
+			int height, int width, PokemonName name, int maxHp, int hp,
+			int maxPp, int pp, int maxStamina, int stamina, int atk, int def,
+			int spAtk, int spDef, int speed) {
+		super(position, velocity, height, width);
 		this.level = 1;
-		this.stats = stats;
+		this.name = name;
 		this.maxHp = maxHp;
 		this.hp = hp;
 		this.maxPp = maxPp;
@@ -235,8 +239,8 @@ public class Pokemon extends Entity {
 	}
 
 	public Animation getCurrentAnimation() {
-
-		return AssetLoader.getAnimationFor(stats.getIndex(), direction, action);
+System.out.println(PokeDex.lookUpPokemon(name).getIndex());
+		return AssetLoader.getAnimationFor(PokeDex.lookUpPokemon(name).getIndex(), direction, action);
 	}
 
 }

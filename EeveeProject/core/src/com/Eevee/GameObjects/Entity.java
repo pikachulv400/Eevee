@@ -1,6 +1,6 @@
 package com.Eevee.GameObjects;
 
-import com.Eevee.PokemonData.PokeData;
+import com.Eevee.PokemonData.PokemonName;
 import com.badlogic.gdx.math.Vector2;
 
 public abstract class Entity {
@@ -42,7 +42,7 @@ public abstract class Entity {
 		this.velocity = velocity;
 	}
 
-	public Entity(Vector2 position, int height, int width, Vector2 velocity) {
+	public Entity(Vector2 position,  Vector2 velocity,int height, int width) {
 		super();
 		this.position = position;
 		this.height = height;
@@ -50,5 +50,6 @@ public abstract class Entity {
 		this.velocity = velocity;
 	}
 	public abstract boolean update(float delta);
+
 	
 }

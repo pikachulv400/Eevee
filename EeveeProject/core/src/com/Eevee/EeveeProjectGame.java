@@ -1,5 +1,6 @@
 package com.Eevee;
 
+import com.Eevee.PokemonData.PokeDex;
 import com.Eevee.Screens.TestScreen;
 import com.Eevee.Util.AssetLoader;
 import com.badlogic.gdx.Game;
@@ -16,6 +17,7 @@ public class EeveeProjectGame extends Game {
 	@Override
 	public void create() {
 		AssetLoader.load();
+		PokeDex.load();
 		setScreen(new TestScreen());
 	}
 

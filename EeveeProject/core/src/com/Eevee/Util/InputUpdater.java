@@ -1,14 +1,21 @@
 package com.Eevee.Util;
 
+import com.Eevee.GameObjects.Projectile;
 import com.Eevee.PokemonData.Action;
+import com.Eevee.Screens.ArenaScreen;
+import com.Eevee.Screens.TestScreen;
+import com.badlogic.gdx.Screen;
+import com.badlogic.gdx.math.Vector2;
 
 public class InputUpdater {
 	protected int shouldMove,shouldAttack,shouldHit;
 	private InputHandler inputhandler;
 	private float skillDuration = 60;
 	private float cooldown = 100;
+	private TestScreen screen;
 	
-	public InputUpdater(InputHandler inputhandler){
+	public InputUpdater(InputHandler inputhandler,TestScreen screen){
+		this.screen = screen;
 		this.inputhandler=inputhandler;
 	}
 	public void update() {
@@ -56,20 +63,49 @@ public class InputUpdater {
 		}
 		if(shouldAttack>cooldown)
 		{
+			Vector2 velocity = null;
+			switch(inputhandler.getPokemon().getDirection())
+			{
+			case 1:
+				velocity = new Vector2(-0.7071f,-0.7071f);
+				break;
+			case 2:
+				velocity = new Vector2(0,-1);
+				break;
+			case 3:
+				velocity = new Vector2(0.7071f,-0.7071f);
+				break;
+			case 4:
+				velocity = new Vector2(-1,0);
+				break;
+			case 6:
+				velocity = new Vector2(1,0);
+				break;
+			case 7:
+				velocity = new Vector2(-0.7071f,0.7071f);
+				break;
+			case 8:
+				velocity = new Vector2(0,1);
+				break;
+			case 9:
+				velocity = new Vector2(0.7071f,0.7071f);
+				break;
+			}
 			if (inputhandler.useMove1)
 			{
 				inputhandler.getPokemon().setAction(Action.MOVE1);
+				screen.spawnProjectile(new Projectile(inputhandler.getPokemon().getPosition().cpy().add(BoundData.BULBASAUR.getOffset()),velocity,0,0,1,1,1,400));
 				shouldAttack = 0;
 			}
 			if(inputhandler.useMove2)
 			{
 				inputhandler.getPokemon().setAction(Action.MOVE2);
+				screen.spawnProjectile(new Projectile(inputhandler.getPokemon().getPosition().cpy().add(BoundData.BULBASAUR.getOffset()),velocity.cpy().scl(6),0,0,1,1,1,400));
 				shouldAttack = 0;
 			}
 			
 		}
 		
-		System.out.println(shouldAttack+":"+cooldown);
 		if (shouldAttack >= cooldown) { // cooldown
 
 		}// else if (shouldAttack >= skillDuration && shouldAttack <= cooldown) { // skill
@@ -97,7 +133,6 @@ public class InputUpdater {
 		if(shouldAttack ==skillDuration||shouldHit ==skillDuration)
 		{
 			inputhandler.getPokemon().setAction(Action.IDLE);
-			System.out.println("came here");
 			inputhandler.Attacking=false;
 		}
 	}

@@ -6,6 +6,8 @@ import java.util.List;
 import com.Eevee.GameObjects.Pokemon;
 import com.Eevee.GameWorld.GameWorld;
 import com.Eevee.PokemonData.Action;
+import com.Eevee.Screens.ArenaScreen;
+import com.Eevee.Screens.TestScreen;
 import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.InputProcessor;
 
@@ -25,9 +27,9 @@ public class InputHandler implements InputProcessor {
 	 * private float scaleFactorX; private float scaleFactorY;
 	 */
 
-	public InputHandler(Pokemon pokemon) {
+	public InputHandler(Pokemon pokemon,TestScreen arena) {
 		this.pokemon = pokemon;
-		this.inputUpdater = new InputUpdater(this);
+		this.inputUpdater = new InputUpdater(this,arena);
 		/*
 		 * this.myWorld = myWorld; myBird = myWorld.getBird();
 		 * 
@@ -55,25 +57,21 @@ public class InputHandler implements InputProcessor {
 	public boolean keyDown(int keycode) {
 
 		if (keycode == Keys.W) {
-			System.out.println("W");
 			MovingUp = true;
 			MovingDown = false;
 			Moving = true;
 		}
 		if (keycode == Keys.A) {
-			System.out.println("A");
 			MovingLeft = true;
 			MovingRight = false;
 			Moving = true;
 		}
 		if (keycode == Keys.S) {
-			System.out.println("S");
 			MovingDown = true;
 			MovingUp = false;
 			Moving = true;
 		}
 		if (keycode == Keys.D) {
-			System.out.println("D");
 			MovingRight = true;
 			MovingLeft = false;
 			Moving = true;
@@ -90,7 +88,6 @@ public class InputHandler implements InputProcessor {
 		}
 		if (keycode == Keys.H) {
 			isHit = true;
-			pokemon.setAction(Action.HURT);
 		}
 
 		return false;
