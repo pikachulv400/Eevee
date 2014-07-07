@@ -6,12 +6,14 @@ import java.util.List;
 
 import com.Eevee.GameObjects.Pokemon;
 import com.Eevee.GameObjects.Projectile;
+import com.Eevee.net.Master.Player;
 import com.badlogic.gdx.math.Intersector;
 import com.badlogic.gdx.math.Rectangle;
 
 public class GameWorld {
-	private List<Pokemon> pokemonList = Collections.synchronizedList(new ArrayList<Pokemon>());
+	private List<Player> playerList = Collections.synchronizedList(new ArrayList<Player>());
 	private List<Projectile> projectileList = Collections.synchronizedList(new ArrayList<Projectile>());
+	private GameRenderer renderer;
 /*
 	private Bird bird;
 	private ScrollHandler scroller;
@@ -19,15 +21,15 @@ public class GameWorld {
 	private int score = 0;
 	private float runTime = 0;
 	private int midPointY;
-	private GameRenderer renderer;
+	
 	
 	private GameState currentState;
 */
 	public enum GameState {
-		MENU, READY, RUNNING, GAMEOVER, HIGHSCORE
+		SELECTION, LOADING, ARENA, GAMEOVER
 	}
 
-	public GameWorld(int midPointY) {
+	public GameWorld() {
 /*		currentState = GameState.MENU;
 		this.midPointY = midPointY;
 		bird = new Bird(33, midPointY - 5, 17, 12);
@@ -152,9 +154,28 @@ public class GameWorld {
 	public boolean isRunning() {
 		return currentState == GameState.RUNNING;
 	}
-
+*/
 	public void setRenderer(GameRenderer renderer) {
 		this.renderer = renderer;
 	}
-*/
+
+
+	public List<Projectile> getProjectileList() {
+		return projectileList;
+	}
+
+	public void setProjectileList(List<Projectile> projectileList) {
+		this.projectileList = projectileList;
+	}
+	public List<Player> getPlayerList() {
+		return playerList;
+	}
+	public void setPlayerList(List<Player> playerList) {
+		this.playerList = playerList;
+	}
+	public Player getLocalPlayer(){
+		return new Player();
+	}
+
+
 }

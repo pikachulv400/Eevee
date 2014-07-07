@@ -6,8 +6,8 @@ import java.io.ObjectOutputStream;
 import java.net.Socket;
 
 import com.Eevee.net.pack.MasterPacket;
-import com.Eevee.net.pack.MasterPacket00ACKLogin;
-import com.Eevee.net.pack.MasterPacket00Login;
+import com.Eevee.net.pack.MasterPacketACKLogin;
+import com.Eevee.net.pack.MasterPacketLogin;
 
 public class ConnectionHandler implements Runnable {
 
@@ -48,10 +48,10 @@ public class ConnectionHandler implements Runnable {
 			switch (((MasterPacket) packetReceived).packetType) {
 			case LOGIN:
 				System.out.println("Player"
-						+ ((MasterPacket00Login) packetReceived).getUsername()
+						+ ((MasterPacketLogin) packetReceived).getUsername()
 						+ " Has joined the lobby");
 				try {
-					oos.writeObject(new MasterPacket00ACKLogin("Kevin"));
+					oos.writeObject(new MasterPacketACKLogin("Kevin"));
 				} catch (IOException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();

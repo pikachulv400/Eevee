@@ -21,15 +21,17 @@ import com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType;
 public class GameRenderer {
 	
 	private GameWorld world;
-	private GameRenderer renderer;
 	private float runTime;
+	private SpriteBatch batcher;
+	private OrthographicCamera camera;
+	private ShapeRenderer shapeRenderer;
 
 /*
 	private GameWorld myWorld;
 	private OrthographicCamera cam;
 	private ShapeRenderer shapeRenderer;
 
-	private SpriteBatch batcher;
+	
 
 	private int midPointY;
 
@@ -51,29 +53,25 @@ public class GameRenderer {
 	// Buttons
 	private List<SimpleButton> menuButtons;
 	private Color transitionColor;
-
-	public GameRenderer(GameWorld world, int gameHeight, int midPointY) {
-		myWorld = world;
-
-		this.midPointY = midPointY;
-		this.menuButtons = ((InputHandler) Gdx.input.getInputProcessor())
-				.getMenuButtons();
-
-		cam = new OrthographicCamera();
-		cam.setToOrtho(true, 136, gameHeight);
+*/
+	public GameRenderer(GameWorld world, int gameWidth, int gameHeight) {
+		this.world = world;
+		camera = new OrthographicCamera(gameWidth, gameHeight);
+		camera.position.set(world.getLocalPlayer().getPokemon().getPosition().y+52.5f,world.getLocalPlayer().getPokemon().getPosition().y+52.5f, 0f);
+		Gdx.input.setInputProcessor(world.getLocalPlayer().getInput());
 
 		batcher = new SpriteBatch();
-		batcher.setProjectionMatrix(cam.combined);
+		batcher.setProjectionMatrix(camera.combined);
 		shapeRenderer = new ShapeRenderer();
-		shapeRenderer.setProjectionMatrix(cam.combined);
+		shapeRenderer.setProjectionMatrix(camera.combined);
 
-		initGameObjects();
-		initAssets();
+	//	initGameObjects();
+	//	initAssets();
 
-		transitionColor = new Color();
-		prepareTransition(255, 255, 255, .5f);
+	//	transitionColor = new Color();
+	//	prepareTransition(255, 255, 255, .5f);
 	}
-
+/*
 	private void initGameObjects() {
 		bird = myWorld.getBird();
 		scroller = myWorld.getScroller();

@@ -1,6 +1,8 @@
 package com.Eevee.Screens;
 
 import com.Eevee.GameObjects.Pokemon;
+import com.Eevee.GameWorld.GameRenderer;
+import com.Eevee.GameWorld.GameWorld;
 import com.Eevee.PokemonData.Action;
 import com.Eevee.PokemonData.PokeData;
 import com.Eevee.Util.AssetLoader;
@@ -19,19 +21,18 @@ import com.badlogic.gdx.utils.Array;
 
 
 public class ArenaScreen implements Screen{
-	
+	private GameWorld world;
+	private GameRenderer renderer;
+	private float runTime;
+
 	// This is the constructor, not the class declaration
 	public ArenaScreen() {
-		/*float screenWidth = Gdx.graphics.getWidth();
-		float screenHeight = Gdx.graphics.getHeight();
-		float gameWidth = 136;
-		float gameHeight = screenHeight / (screenWidth / gameWidth);
-		int midPointY = (int) (gameHeight / 2);
-
-		world = new GameWorld(midPointY);
-		Gdx.input.setInputProcessor(new InputHandler(world, screenWidth / gameWidth, screenHeight / gameHeight));
-		renderer = new GameRenderer(world, (int) gameHeight, midPointY);
-		world.setRenderer(renderer);*/
+		int screenWidth = Gdx.graphics.getWidth();
+		int screenHeight = Gdx.graphics.getHeight();
+		world = new GameWorld();
+		//Gdx.input.setInputProcessor(new InputHandler(world, screenWidth / gameWidth, screenHeight / gameHeight));
+		renderer = new GameRenderer(world, screenWidth, screenHeight);
+		world.setRenderer(renderer);
 	}
 
 	@Override

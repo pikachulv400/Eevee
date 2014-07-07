@@ -21,8 +21,7 @@ public class AssetLoader {
 	public static TextureRegion[][] BulbasaurRegions;
 	public static TextureRegion CharmanderRegions[];
 	public static TextureRegion tempRegions[] = new TextureRegion[10];
-	public static TextureRegion Bulbasaur_1_H_1, Bulbasaur_2_H_1, Bulbasaur_3_H_1, Bulbasaur_4_H_1, Bulbasaur_6_H_1, Bulbasaur_7_H_1, Bulbasaur_8_H_1, Bulbasaur_9_H_1, //Bulbasaur
-								Charmander_1_R_1, Charmander_1_R_2, Charmander_1_R_3,Charmander_1_R_4, 
+	public static TextureRegion								Charmander_1_R_1, Charmander_1_R_2, Charmander_1_R_3,Charmander_1_R_4, 
 								Charmander_2_R_1, Charmander_2_R_2, Charmander_2_R_3,Charmander_2_R_4,
 								Charmander_3_R_1, Charmander_3_R_2, Charmander_3_R_3,Charmander_3_R_4,
 								Charmander_4_R_1, Charmander_4_R_2, Charmander_4_R_3,Charmander_4_R_4,
@@ -50,6 +49,15 @@ public class AssetLoader {
 			Bulbasaur_7_H,
 			Bulbasaur_8_H,
 			Bulbasaur_9_H, // Bulbasaur
+			Bulbasaur_1_I,
+			Bulbasaur_2_I,
+			Bulbasaur_3_I,
+			Bulbasaur_4_I,
+			Bulbasaur_5_I,
+			Bulbasaur_6_I,
+			Bulbasaur_7_I,
+			Bulbasaur_8_I,
+			Bulbasaur_9_I,
 			Charmander_1_R, Charmander_2_R, Charmander_3_R, Charmander_4_R,
 			Charmander_5_R, Charmander_6_R, Charmander_7_R, Charmander_8_R,
 			Charmander_9_R, Charmander_1_A, Charmander_2_A, Charmander_3_A,
@@ -175,9 +183,11 @@ public class AssetLoader {
 
 		Bulbasaur_1_R = new Animation(0.2f,BulbasaurRegions[2][1], BulbasaurRegions[3][1],BulbasaurRegions[4][1]);
 		Bulbasaur_1_R.setPlayMode(Animation.PlayMode.LOOP);
+		Bulbasaur_1_I = new Animation(0.2f,BulbasaurRegions[4][1]);
 		
 		Bulbasaur_2_R = new Animation(0.2f,BulbasaurRegions[0][0],  BulbasaurRegions[1][0],BulbasaurRegions[2][0]);
 		Bulbasaur_2_R.setPlayMode(Animation.PlayMode.LOOP);
+		Bulbasaur_2_I = new Animation(0.2f,BulbasaurRegions[2][0]);
 		
 		tempRegions[0] = new TextureRegion(BulbasaurRegions[2][1]);
 		tempRegions[1] = new TextureRegion(BulbasaurRegions[3][1]);
@@ -187,9 +197,11 @@ public class AssetLoader {
 		tempRegions[2].flip(true, false);
 		Bulbasaur_3_R = new Animation(0.2f,tempRegions[0], tempRegions[1],tempRegions[2]);
 		Bulbasaur_3_R.setPlayMode(Animation.PlayMode.LOOP);
+		Bulbasaur_3_I = new Animation(0.2f,tempRegions[2]);
 		
-		Bulbasaur_4_R = new Animation(0.2f,BulbasaurRegions[6][0], BulbasaurRegions[0][1], BulbasaurRegions[2][1]);
+		Bulbasaur_4_R = new Animation(0.2f,BulbasaurRegions[6][0], BulbasaurRegions[0][1], BulbasaurRegions[1][1]);
 		Bulbasaur_4_R.setPlayMode(Animation.PlayMode.LOOP);
+		Bulbasaur_4_I = new Animation(0.2f,BulbasaurRegions[1][1]);
 		
 		tempRegions[0] = new TextureRegion(BulbasaurRegions[6][0]);
 		tempRegions[1] = new TextureRegion(BulbasaurRegions[0][1]);
@@ -199,12 +211,15 @@ public class AssetLoader {
 		tempRegions[2].flip(true, false);
 		Bulbasaur_6_R = new Animation(0.2f,tempRegions[0], tempRegions[1],tempRegions[2]);
 		Bulbasaur_6_R.setPlayMode(Animation.PlayMode.LOOP);
+		Bulbasaur_6_I = new Animation(0.2f,tempRegions[2]);
 		
 		Bulbasaur_7_R = new Animation(0.2f,BulbasaurRegions[5][1], BulbasaurRegions[6][1],BulbasaurRegions[0][2]);
 		Bulbasaur_7_R.setPlayMode(Animation.PlayMode.LOOP);
+		Bulbasaur_7_I = new Animation(0.2f,BulbasaurRegions[0][2]);
 		
 		Bulbasaur_8_R = new Animation(0.2f,BulbasaurRegions[3][0], BulbasaurRegions[4][0],BulbasaurRegions[5][0]);
 		Bulbasaur_8_R.setPlayMode(Animation.PlayMode.LOOP);
+		Bulbasaur_8_I = new Animation(0.2f,BulbasaurRegions[5][0]);
 		
 		tempRegions[0] = new TextureRegion(BulbasaurRegions[5][1]);
 		tempRegions[1] = new TextureRegion(BulbasaurRegions[6][1]);
@@ -214,6 +229,7 @@ public class AssetLoader {
 		tempRegions[2].flip(true, false);
 		Bulbasaur_9_R = new Animation(0.2f,tempRegions[0], tempRegions[1] ,tempRegions[2]);
 		Bulbasaur_9_R.setPlayMode(Animation.PlayMode.LOOP);
+		Bulbasaur_9_I = new Animation(0.2f,tempRegions[2]);
 		
 		Bulbasaur_1_M1 = new  Animation(0.2f,BulbasaurRegions[5][3],BulbasaurRegions[6][3]);
 		Bulbasaur_1_M1.setPlayMode(Animation.PlayMode.LOOP);
@@ -304,9 +320,9 @@ public class AssetLoader {
 		
 		Bulbasaur_8_H = new  Animation(0.2f,BulbasaurRegions[2][2]);
 		
-		Bulbasaur_9_H_1 = new TextureRegion(Bulbasaur, 525, 210, 105, 105);
-		Bulbasaur_9_H_1.flip(true, false);
-		Bulbasaur_9_H = new  Animation(0.2f,Bulbasaur_9_H_1);
+		tempRegions[0] = new TextureRegion(BulbasaurRegions[5][2]);
+		tempRegions[0].flip(true, false);
+		Bulbasaur_9_H = new  Animation(0.2f,tempRegions[0]);
 		
 		AnimationMap.put(new PokemonState(1,1,Action.RUN), Bulbasaur_1_R);
 		AnimationMap.put(new PokemonState(1,2,Action.RUN), Bulbasaur_2_R);
@@ -340,6 +356,14 @@ public class AssetLoader {
 		AnimationMap.put(new PokemonState(1,7,Action.HURT), Bulbasaur_7_H);
 		AnimationMap.put(new PokemonState(1,8,Action.HURT), Bulbasaur_8_H);
 		AnimationMap.put(new PokemonState(1,9,Action.HURT), Bulbasaur_9_H);
+		AnimationMap.put(new PokemonState(1,1,Action.IDLE), Bulbasaur_1_I);
+		AnimationMap.put(new PokemonState(1,2,Action.IDLE), Bulbasaur_2_I);
+		AnimationMap.put(new PokemonState(1,3,Action.IDLE), Bulbasaur_3_I);
+		AnimationMap.put(new PokemonState(1,4,Action.IDLE), Bulbasaur_4_I);
+		AnimationMap.put(new PokemonState(1,6,Action.IDLE), Bulbasaur_6_I);
+		AnimationMap.put(new PokemonState(1,7,Action.IDLE), Bulbasaur_7_I);
+		AnimationMap.put(new PokemonState(1,8,Action.IDLE), Bulbasaur_8_I);
+		AnimationMap.put(new PokemonState(1,9,Action.IDLE), Bulbasaur_9_I);
 		
 	}
 	private static void loadCharmander(){

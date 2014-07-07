@@ -6,8 +6,8 @@ import java.net.*;
 import java.io.*;
 
 import com.Eevee.net.pack.MasterPacket;
-import com.Eevee.net.pack.MasterPacket00ACKLogin;
-import com.Eevee.net.pack.MasterPacket00Login;
+import com.Eevee.net.pack.MasterPacketACKLogin;
+import com.Eevee.net.pack.MasterPacketLogin;
 
 /**
  * The SocketClient class is a simple example of a TCP/IP Socket Client.
@@ -15,6 +15,7 @@ import com.Eevee.net.pack.MasterPacket00Login;
  */
 
 public class MasterClient {
+	
 	public static void main(String[] args) {
 		/** Define a host server */
 		String host = "localhost";
@@ -38,7 +39,7 @@ public class MasterClient {
 				 * Instantiate a BufferedInputStream object for reading incoming
 				 * socket streams.
 				 */
-				oos.writeObject(new MasterPacket00Login("Kevin"));
+				oos.writeObject(new MasterPacketLogin("Kevin"));
 				ObjectInputStream ois = new ObjectInputStream(connection.getInputStream());
 				parsePacket(ois.readObject());
 				/**
@@ -61,7 +62,7 @@ public class MasterClient {
 			switch (((MasterPacket) packetReceived).packetType) {
 			case ACKLOGIN:
 				System.out.println("Welcome"
-						+ ((MasterPacket00ACKLogin) packetReceived).getUsername());
+						+ ((MasterPacketACKLogin) packetReceived).getUsername());
 				break;
 			}
 		}

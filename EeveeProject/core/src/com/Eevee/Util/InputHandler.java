@@ -3,106 +3,94 @@ package com.Eevee.Util;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.Eevee.GameObjects.Pokemon;
 import com.Eevee.GameWorld.GameWorld;
+import com.Eevee.PokemonData.Action;
 import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.InputProcessor;
 
-
 public class InputHandler implements InputProcessor {
-	private boolean MovingUp,MovingDown,MovingLeft,MovingRight,Moving,Attacking = false;
+	protected boolean MovingUp, MovingDown, MovingLeft, MovingRight, Moving,
+			Attacking, isHit,useMove1,useMove2 = false;
+	private InputUpdater inputUpdater;
+
 	private GameWorld myWorld;
-/*
-	private List<SimpleButton> menuButtons;
+	private Pokemon pokemon;
 
-	private SimpleButton playButton;
+	/*
+	 * private List<SimpleButton> menuButtons;
+	 * 
+	 * private SimpleButton playButton;
+	 * 
+	 * private float scaleFactorX; private float scaleFactorY;
+	 */
 
-	private float scaleFactorX;
-	private float scaleFactorY;*/
+	public InputHandler(Pokemon pokemon) {
+		this.pokemon = pokemon;
+		this.inputUpdater = new InputUpdater(this);
+		/*
+		 * this.myWorld = myWorld; myBird = myWorld.getBird();
+		 * 
+		 * int midPointY = myWorld.getMidPointY();
+		 * 
+		 * this.scaleFactorX = scaleFactorX; this.scaleFactorY = scaleFactorY;
+		 * 
+		 * menuButtons = new ArrayList<SimpleButton>(); playButton = new
+		 * SimpleButton( 136 / 2 - (AssetLoader.playButtonUp.getRegionWidth() /
+		 * 2), midPointY + 50, 29, 16, AssetLoader.playButtonUp,
+		 * AssetLoader.playButtonDown); menuButtons.add(playButton);
+		 */
 
-	public InputHandler(/*GameWorld myWorld, float scaleFactorX,
-			float scaleFactorY*/) {
-		/*this.myWorld = myWorld;
-		myBird = myWorld.getBird();
-
-		int midPointY = myWorld.getMidPointY();
-
-		this.scaleFactorX = scaleFactorX;
-		this.scaleFactorY = scaleFactorY;
-
-		menuButtons = new ArrayList<SimpleButton>();
-		playButton = new SimpleButton(
-				136 / 2 - (AssetLoader.playButtonUp.getRegionWidth() / 2),
-				midPointY + 50, 29, 16, AssetLoader.playButtonUp,
-				AssetLoader.playButtonDown);
-		menuButtons.add(playButton);*/
 	}
 
-	@Override
-	public boolean touchDown(int screenX, int screenY, int pointer, int button) {
-		/*screenX = scaleX(screenX);
-		screenY = scaleY(screenY);
-
-		if (myWorld.isMenu()) {
-			playButton.isTouchDown(screenX, screenY);
-		} else if (myWorld.isReady()) {
-			myWorld.start();
-			myBird.onClick();
-		} else if (myWorld.isRunning()) {
-			myBird.onClick();
-		}
-
-		if (myWorld.isGameOver() || myWorld.isHighScore()) {
-			myWorld.restart();
-		}*/
-
-		return true;
+	public InputUpdater getInputUpdater() {
+		return inputUpdater;
 	}
 
-	@Override
-	public boolean touchUp(int screenX, int screenY, int pointer, int button) {
-		/*screenX = scaleX(screenX);
-		screenY = scaleY(screenY);
-
-		if (myWorld.isMenu()) {
-			if (playButton.isTouchUp(screenX, screenY)) {
-				myWorld.ready();
-				return true;
-			}
-		}
-*/
-		return false;
+	public void setInputUpdater(InputUpdater inputUpdater) {
+		this.inputUpdater = inputUpdater;
 	}
 
 	@Override
 	public boolean keyDown(int keycode) {
 
 		if (keycode == Keys.W) {
-			MovingUp=true;
-			MovingDown=false;
-			Moving=true;
+			System.out.println("W");
+			MovingUp = true;
+			MovingDown = false;
+			Moving = true;
 		}
 		if (keycode == Keys.A) {
-			MovingLeft=true;
-			MovingRight=false;
-			Moving=true;
+			System.out.println("A");
+			MovingLeft = true;
+			MovingRight = false;
+			Moving = true;
 		}
 		if (keycode == Keys.S) {
-			MovingDown=true;
-			MovingUp=false;
-			Moving=true;
+			System.out.println("S");
+			MovingDown = true;
+			MovingUp = false;
+			Moving = true;
 		}
 		if (keycode == Keys.D) {
-			MovingRight=true;
-			MovingLeft=false;
-			Moving=true;
-		}
-		if(Moving)
-		{
-			//HandleMovement();
+			System.out.println("D");
+			MovingRight = true;
+			MovingLeft = false;
+			Moving = true;
+
 		}
 		// Can now use Space Bar to play the game
-		if (keycode == Keys.SPACE) {
-			//HandleAttack();
+		if (keycode == Keys.J) {
+			Attacking = true;
+			useMove1=true;
+		}
+		if (keycode == Keys.K) {
+			Attacking = true;
+			useMove2=true;
+		}
+		if (keycode == Keys.H) {
+			isHit = true;
+			pokemon.setAction(Action.HURT);
 		}
 
 		return false;
@@ -110,38 +98,108 @@ public class InputHandler implements InputProcessor {
 
 	@Override
 	public boolean keyUp(int keycode) {
+
+		if (keycode == Keys.W) {
+			MovingUp = false;
+			inputUpdater.shouldMove = 0;
+			if(!MovingUp&&!MovingDown&&!MovingLeft&&!MovingRight)
+			{
+				pokemon.setAction(Action.IDLE);
+				Moving = false;
+			}
+		}
+		if (keycode == Keys.A) {
+			MovingLeft = false;
+			inputUpdater.shouldMove = 0;
+			if(!MovingUp&&!MovingDown&&!MovingLeft&&!MovingRight)
+			{
+				pokemon.setAction(Action.IDLE);
+				Moving = false;
+			}
+		}
+		if (keycode == Keys.S) {
+			MovingDown = false;
+			inputUpdater.shouldMove = 0;
+			if(!MovingUp&&!MovingDown&&!MovingLeft&&!MovingRight)
+			{
+				pokemon.setAction(Action.IDLE);
+				Moving = false;
+			}
+		}
+		if (keycode == Keys.D) {
+			MovingRight = false;
+			inputUpdater.shouldMove = 0;
+			if(!MovingUp&&!MovingDown&&!MovingLeft&&!MovingRight)
+			{
+				pokemon.setAction(Action.IDLE);
+				Moving = false;
+			}
+		}
+		
+		// Can now use Space Bar to play the game
+		if (keycode == Keys.J) {
+			Attacking = false;
+			inputUpdater.shouldMove = 0;
+			useMove1=false;
+		}
+		if (keycode == Keys.K) {
+			Attacking = false;
+			inputUpdater.shouldMove = 0;
+			useMove2=false;
+		}
+
+		if (keycode == Keys.H) {
+			isHit = false;
+
+			inputUpdater.shouldHit = 0;
+		}
+
+		// TODO Auto-generated method stub
 		return false;
 	}
 
 	@Override
 	public boolean keyTyped(char character) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean touchDown(int screenX, int screenY, int pointer, int button) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean touchUp(int screenX, int screenY, int pointer, int button) {
+		// TODO Auto-generated method stub
 		return false;
 	}
 
 	@Override
 	public boolean touchDragged(int screenX, int screenY, int pointer) {
+		// TODO Auto-generated method stub
 		return false;
 	}
 
 	@Override
 	public boolean mouseMoved(int screenX, int screenY) {
+		// TODO Auto-generated method stub
 		return false;
 	}
 
 	@Override
 	public boolean scrolled(int amount) {
+		// TODO Auto-generated method stub
 		return false;
 	}
 
-	/*private int scaleX(int screenX) {
-		return (int) (screenX / scaleFactorX);
+	public Pokemon getPokemon() {
+		return pokemon;
 	}
 
-	private int scaleY(int screenY) {
-		return (int) (screenY / scaleFactorY);
+	public void setPokemon(Pokemon pokemon) {
+		this.pokemon = pokemon;
 	}
 
-	public List<SimpleButton> getMenuButtons() {
-		return menuButtons;
-	}*/
 }

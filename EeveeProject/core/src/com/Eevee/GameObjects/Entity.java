@@ -3,7 +3,7 @@ package com.Eevee.GameObjects;
 import com.Eevee.PokemonData.PokeData;
 import com.badlogic.gdx.math.Vector2;
 
-public class Entity {
+public abstract class Entity {
 
 	private Vector2 position;
 	private int height;
@@ -49,5 +49,6 @@ public class Entity {
 		this.width = width;
 		this.velocity = velocity;
 	}
+	public abstract boolean update(float delta);
 	
 }
