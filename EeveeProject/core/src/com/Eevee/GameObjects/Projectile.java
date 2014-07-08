@@ -1,5 +1,6 @@
 package com.Eevee.GameObjects;
 
+import com.badlogic.gdx.math.Ellipse;
 import com.badlogic.gdx.math.Vector2;
 
 public class Projectile extends Entity {
@@ -9,7 +10,7 @@ public class Projectile extends Entity {
 	private int type;
 	private float timeToDie;
 	private HitEffect hitEffect;
-	private Bound bound;
+	private Ellipse bound;
 
 	public Projectile(Vector2 position, Vector2 velocity,int height, int width,
 			 int fromPlayerID, int spAtk, int type,

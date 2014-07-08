@@ -6,8 +6,11 @@ import com.Eevee.PokemonData.PokeDex;
 import com.Eevee.PokemonData.PokemonName;
 import com.Eevee.PokemonData.Status;
 import com.Eevee.Util.AssetLoader;
+import com.Eevee.Util.BoundData;
+import com.Eevee.Util.BoundMap;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.Animation;
+import com.badlogic.gdx.math.Ellipse;
 import com.badlogic.gdx.math.Vector2;
 
 public class Pokemon extends Entity {
@@ -33,14 +36,62 @@ public class Pokemon extends Entity {
 	private Move move2;
 	private Move move3;
 	private Move move4;
-	private Bound bound;
+	private Ellipse bound;
+	private BoundData bd;
+
+	public int getLevel() {
+		return level;
+	}
+
+	public void setLevel(int level) {
+		this.level = level;
+	}
+
+	public Move getMove1() {
+		return move1;
+	}
+
+	public void setMove1(Move move1) {
+		this.move1 = move1;
+	}
+
+	public Move getMove2() {
+		return move2;
+	}
+
+	public void setMove2(Move move2) {
+		this.move2 = move2;
+	}
+
+	public Move getMove3() {
+		return move3;
+	}
+
+	public void setMove3(Move move3) {
+		this.move3 = move3;
+	}
+
+	public Move getMove4() {
+		return move4;
+	}
+
+	public void setMove4(Move move4) {
+		this.move4 = move4;
+	}
+
+	public Ellipse getBound() {
+		return bound;
+	}
+
+	public void setBound(Ellipse bound) {
+		this.bound = bound;
+	}
 
 	public PokemonName getName() {
 		return name;
 	}
 
 	public boolean update(float delta) {
-
 		if (hp <= 0) {
 			isAlive = false;
 		}
@@ -76,6 +127,7 @@ public class Pokemon extends Entity {
 			this.setVelocity(new Vector2(0, 0));
 		}
 		this.getPosition().add(this.getVelocity());
+		bound.setPosition(super.getPosition().cpy().add(bd.getOffset()));
 		return isAlive;
 	}
 
@@ -203,22 +255,23 @@ public class Pokemon extends Entity {
 		this.action = action;
 	}
 
-	public Pokemon(Vector2 position, Vector2 velocity, 
-			int height, int width, PokemonName name) {
-		super(position, velocity, height, width);
+	public Pokemon(Vector2 position, int height, int width, PokemonName name) {
+		super(position, new Vector2(0, 0), height, width);
 		this.level = 1;
 		this.name = name;
 		this.isAlive = true;
 		this.status = Status.NORMAL;
-		this.action = Action.RUN;
+		this.action = Action.IDLE;
 		this.direction = 2;
+		bd = BoundMap.getBoundDataByPokemonName(name);
+		Vector2 ellipsePosition = super.getPosition().cpy();
+		bound = new Ellipse(ellipsePosition, bd.getWidth(), bd.getHeight());
 	}
 
-	public Pokemon(Vector2 position, Vector2 velocity, 
-			int height, int width, PokemonName name, int maxHp, int hp,
-			int maxPp, int pp, int maxStamina, int stamina, int atk, int def,
-			int spAtk, int spDef, int speed) {
-		super(position, velocity, height, width);
+	public Pokemon(Vector2 position, int height, int width, PokemonName name,
+			int maxHp, int hp, int maxPp, int pp, int maxStamina, int stamina,
+			int atk, int def, int spAtk, int spDef, int speed) {
+		super(position, new Vector2(0, 0), height, width);
 		this.level = 1;
 		this.name = name;
 		this.maxHp = maxHp;
@@ -234,13 +287,16 @@ public class Pokemon extends Entity {
 		this.speed = speed;
 		this.isAlive = true;
 		this.status = Status.NORMAL;
-		this.action = Action.RUN;
+		this.action = Action.IDLE;
 		this.direction = 2;
+		bd = BoundMap.getBoundDataByPokemonName(name);
+		Vector2 ellipsePosition = super.getPosition().cpy().add(bd.getOffset());
+		bound = new Ellipse(ellipsePosition, bd.getWidth(), bd.getHeight());
 	}
 
 	public Animation getCurrentAnimation() {
-System.out.println(PokeDex.lookUpPokemon(name).getIndex());
-		return AssetLoader.getAnimationFor(PokeDex.lookUpPokemon(name).getIndex(), direction, action);
+		return AssetLoader.getAnimationFor(PokeDex.lookUpPokemon(name)
+				.getIndex(), direction, action);
 	}
 
 }

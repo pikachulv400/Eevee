@@ -8,9 +8,9 @@ public class PokeDex {
 
 	public static void load() {
 		// TODO Auto-generated method stub
-		pokedex.put(PokemonName.BULBASAUR, new PokemonInfo(1, 45, 100, 100, 49, 49, 65, 65, 45, PokemonType.GRASS));
-		pokedex.put(PokemonName.CHARMANDER, new PokemonInfo(4, 39, 100, 100, 52, 43,60, 50, 65, PokemonType.FIRE)); 
-		pokedex.put(PokemonName.SQUIRTLE, new PokemonInfo(7, 44, 100, 100, 48, 65, 50, 64, 43, PokemonType.WATER));
+		pokedex.put(PokemonName.BULBASAUR, new PokemonInfo(1, 45, 100, 100, 49, 49, 65, 65, 45, PokemonType.GRASS,new Evolution(16,PokemonName.IVYSAUR)));
+		pokedex.put(PokemonName.CHARMANDER, new PokemonInfo(4, 39, 100, 100, 52, 43,60, 50, 65, PokemonType.FIRE,new Evolution(16,PokemonName.CHARMELEON))); 
+		pokedex.put(PokemonName.SQUIRTLE, new PokemonInfo(7, 44, 100, 100, 48, 65, 50, 64, 43, PokemonType.WATER,new Evolution(16,PokemonName.WARTORTLE)));
 	}
 
 	

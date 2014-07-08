@@ -8,9 +8,14 @@ import com.Eevee.net.GameClient;
 import com.Eevee.net.GameServer;
 
 public class Player {
+	public Player(int iD, InputHandler input) {
+		super();
+		ID = iD;
+		this.input = input;
+	}
 	private int ID;
 	private InputHandler input;
-	private Pokemon pokemon;
+
 	
 	public int getID() {
 		return ID;
@@ -24,12 +29,11 @@ public class Player {
 	public void setInput(InputHandler input) {
 		this.input = input;
 	}
-	public Pokemon getPokemon() {
-		return pokemon;
+	public void update(float delta) {
+		// TODO Auto-generated method stub
+		input.getInputUpdater().update();
+		input.getPokemon().update(delta);
+		
 	}
-	public void setPokemon(Pokemon pokemon) {
-		this.pokemon = pokemon;
-	}
-
 	
 }

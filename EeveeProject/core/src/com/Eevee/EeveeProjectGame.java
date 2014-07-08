@@ -1,8 +1,9 @@
 package com.Eevee;
 
 import com.Eevee.PokemonData.PokeDex;
-import com.Eevee.Screens.TestScreen;
+import com.Eevee.Screens.ArenaScreen;
 import com.Eevee.Util.AssetLoader;
+import com.Eevee.Util.BoundMap;
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.GL20;
@@ -18,7 +19,8 @@ public class EeveeProjectGame extends Game {
 	public void create() {
 		AssetLoader.load();
 		PokeDex.load();
-		setScreen(new TestScreen());
+		BoundMap.load();
+		setScreen(new ArenaScreen());
 	}
 
 	@Override

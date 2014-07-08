@@ -7,13 +7,12 @@ import com.Eevee.GameObjects.Pokemon;
 import com.Eevee.GameWorld.GameWorld;
 import com.Eevee.PokemonData.Action;
 import com.Eevee.Screens.ArenaScreen;
-import com.Eevee.Screens.TestScreen;
 import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.InputProcessor;
 
 public class InputHandler implements InputProcessor {
-	protected boolean MovingUp, MovingDown, MovingLeft, MovingRight, Moving,
-			Attacking, isHit,useMove1,useMove2 = false;
+	protected boolean MovingUp= false, MovingDown= false, MovingLeft= false, MovingRight= false, Moving= false,
+			Attacking= false, isHit= false,useMove1= false,useMove2 = false;
 	private InputUpdater inputUpdater;
 
 	private GameWorld myWorld;
@@ -27,9 +26,9 @@ public class InputHandler implements InputProcessor {
 	 * private float scaleFactorX; private float scaleFactorY;
 	 */
 
-	public InputHandler(Pokemon pokemon,TestScreen arena) {
+	public InputHandler(Pokemon pokemon,GameWorld myWorld) {
 		this.pokemon = pokemon;
-		this.inputUpdater = new InputUpdater(this,arena);
+		this.inputUpdater = new InputUpdater(this,myWorld);
 		/*
 		 * this.myWorld = myWorld; myBird = myWorld.getBird();
 		 * 
@@ -57,6 +56,7 @@ public class InputHandler implements InputProcessor {
 	public boolean keyDown(int keycode) {
 
 		if (keycode == Keys.W) {
+
 			MovingUp = true;
 			MovingDown = false;
 			Moving = true;

@@ -24,7 +24,6 @@ import com.badlogic.gdx.utils.Array;
 public class ArenaScreen implements Screen{
 	private GameWorld world;
 	private GameRenderer renderer;
-	private Pokemon bulbasaur = new Pokemon(new Vector2(50, 50), new Vector2(0, 0),106, 106, PokemonName.BULBASAUR);
 //	private InputHandler inputHandler = new InputHandler(bulbasaur, this);
 	private float runTime;
 
@@ -40,6 +39,9 @@ public class ArenaScreen implements Screen{
 
 	@Override
 	public void render(float delta){
+		runTime+=Gdx.graphics.getDeltaTime();
+		world.update(delta);
+		renderer.render();
 		//renderPokemons();
 		//renderProjectiles();
 		//inputHandler.getInputUpdater().update();

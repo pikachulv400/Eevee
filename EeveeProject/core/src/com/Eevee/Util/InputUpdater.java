@@ -1,9 +1,9 @@
 package com.Eevee.Util;
 
 import com.Eevee.GameObjects.Projectile;
+import com.Eevee.GameWorld.GameWorld;
 import com.Eevee.PokemonData.Action;
 import com.Eevee.Screens.ArenaScreen;
-import com.Eevee.Screens.TestScreen;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.math.Vector2;
 
@@ -12,10 +12,10 @@ public class InputUpdater {
 	private InputHandler inputhandler;
 	private float skillDuration = 60;
 	private float cooldown = 100;
-	private TestScreen screen;
+	private GameWorld myWorld;
 	
-	public InputUpdater(InputHandler inputhandler,TestScreen screen){
-		this.screen = screen;
+	public InputUpdater(InputHandler inputhandler,GameWorld myWorld){
+		this.myWorld = myWorld;
 		this.inputhandler=inputhandler;
 	}
 	public void update() {
@@ -94,13 +94,13 @@ public class InputUpdater {
 			if (inputhandler.useMove1)
 			{
 				inputhandler.getPokemon().setAction(Action.MOVE1);
-				screen.spawnProjectile(new Projectile(inputhandler.getPokemon().getPosition().cpy().add(BoundData.BULBASAUR.getOffset()),velocity,0,0,1,1,1,400));
+				myWorld.spawnProjectile(new Projectile(inputhandler.getPokemon().getPosition().cpy().add(BoundData.BULBASAUR.getOffset()),velocity,0,0,1,1,1,400));
 				shouldAttack = 0;
 			}
 			if(inputhandler.useMove2)
 			{
 				inputhandler.getPokemon().setAction(Action.MOVE2);
-				screen.spawnProjectile(new Projectile(inputhandler.getPokemon().getPosition().cpy().add(BoundData.BULBASAUR.getOffset()),velocity.cpy().scl(6),0,0,1,1,1,400));
+				myWorld.spawnProjectile(new Projectile(inputhandler.getPokemon().getPosition().cpy().add(BoundData.BULBASAUR.getOffset()),velocity.cpy().scl(6),0,0,1,1,1,400));
 				shouldAttack = 0;
 			}
 			

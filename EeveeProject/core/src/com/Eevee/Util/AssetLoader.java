@@ -20,20 +20,9 @@ public class AssetLoader {
 	public static int charmanderSize = 106;
 	public static Texture Background1;
 	public static TextureRegion[][] BulbasaurRegions;
-	public static TextureRegion CharmanderRegions[];
+	public static TextureRegion[][] CharmanderRegions;
 	public static TextureRegion tempRegions[] = new TextureRegion[10];
-	public static TextureRegion								Charmander_1_R_1, Charmander_1_R_2, Charmander_1_R_3,Charmander_1_R_4, 
-								Charmander_2_R_1, Charmander_2_R_2, Charmander_2_R_3,Charmander_2_R_4,
-								Charmander_3_R_1, Charmander_3_R_2, Charmander_3_R_3,Charmander_3_R_4,
-								Charmander_4_R_1, Charmander_4_R_2, Charmander_4_R_3,Charmander_4_R_4,
-								Charmander_6_R_1, Charmander_6_R_2, Charmander_6_R_3,Charmander_6_R_4,
-								Charmander_7_R_1, Charmander_7_R_2, Charmander_7_R_3,Charmander_7_R_4,
-								Charmander_8_R_1, Charmander_8_R_2, Charmander_8_R_3,Charmander_8_R_4,
-								Charmander_9_R_1, Charmander_9_R_2, Charmander_9_R_3,Charmander_9_R_4,
-								Charmander_1_A_1, Charmander_2_A_1, Charmander_3_A_1, Charmander_4_A_1, Charmander_6_A_1, Charmander_7_A_1, Charmander_8_A_1, Charmander_9_A_1,
- Charmander_1_H_1, Charmander_2_H_1,
-			Charmander_3_H_1, Charmander_4_H_1, Charmander_6_H_1,
-			Charmander_7_H_1, Charmander_8_H_1, Charmander_9_H_1; // Charmander
+
 	public static Animation Bulbasaur_1_R, Bulbasaur_2_R, Bulbasaur_3_R,
 			Bulbasaur_4_R, Bulbasaur_5_R, Bulbasaur_6_R, Bulbasaur_7_R,
 			Bulbasaur_8_R, Bulbasaur_9_R, Bulbasaur_1_M1, Bulbasaur_2_M1,
@@ -41,31 +30,20 @@ public class AssetLoader {
 			Bulbasaur_7_M1, Bulbasaur_8_M1, Bulbasaur_9_M1, Bulbasaur_1_M2,
 			Bulbasaur_2_M2, Bulbasaur_3_M2, Bulbasaur_4_M2, Bulbasaur_5_M2,
 			Bulbasaur_6_M2, Bulbasaur_7_M2, Bulbasaur_8_M2, Bulbasaur_9_M2,
-			Bulbasaur_1_H,
-			Bulbasaur_2_H,
-			Bulbasaur_3_H,
-			Bulbasaur_4_H,
-			Bulbasaur_5_H,
-			Bulbasaur_6_H,
-			Bulbasaur_7_H,
-			Bulbasaur_8_H,
-			Bulbasaur_9_H, // Bulbasaur
-			Bulbasaur_1_I,
-			Bulbasaur_2_I,
-			Bulbasaur_3_I,
-			Bulbasaur_4_I,
-			Bulbasaur_5_I,
-			Bulbasaur_6_I,
-			Bulbasaur_7_I,
-			Bulbasaur_8_I,
-			Bulbasaur_9_I,
+			Bulbasaur_1_H,Bulbasaur_2_H,Bulbasaur_3_H,Bulbasaur_4_H,
+			Bulbasaur_5_H,Bulbasaur_6_H,Bulbasaur_7_H,Bulbasaur_8_H,Bulbasaur_9_H, // Bulbasaur
+			Bulbasaur_1_I,Bulbasaur_2_I,Bulbasaur_3_I,Bulbasaur_4_I,
+			Bulbasaur_5_I,Bulbasaur_6_I,Bulbasaur_7_I,Bulbasaur_8_I,Bulbasaur_9_I,
 			Charmander_1_R, Charmander_2_R, Charmander_3_R, Charmander_4_R,
 			Charmander_5_R, Charmander_6_R, Charmander_7_R, Charmander_8_R,
 			Charmander_9_R, Charmander_1_A, Charmander_2_A, Charmander_3_A,
 			Charmander_4_A, Charmander_5_A, Charmander_6_A, Charmander_7_A,
 			Charmander_8_A, Charmander_9_A, Charmander_1_H, Charmander_2_H,
 			Charmander_3_H, Charmander_4_H, Charmander_5_H, Charmander_6_H,
-			Charmander_7_H, Charmander_8_H, Charmander_9_H; // Charmander
+			Charmander_7_H, Charmander_8_H, Charmander_9_H,
+			Charmander_1_I, Charmander_2_I,
+			Charmander_3_I, Charmander_4_I, Charmander_5_I, Charmander_6_I,
+			Charmander_7_I, Charmander_8_I, Charmander_9_I;// Charmander
 	private static HashMap<PokemonState,Animation> AnimationMap = new HashMap<PokemonState,Animation>();
 
 	/*
@@ -370,62 +348,46 @@ public class AssetLoader {
 	}
 	private static void loadCharmander(){
 		
+	
+		
 		
 		Charmander = new Texture(Gdx.files.internal("data/CharmanderSprite.png"));
-		Charmander_1_R_1 = new TextureRegion(Charmander, 0, 106, 106, 106);
-		Charmander_1_R_2 = new TextureRegion(Charmander, 106, 106, 106, 106);
-		Charmander_1_R_3 = new TextureRegion(Charmander, 212, 106, 106, 106);
+		CharmanderRegions = new TextureRegion[Charmander.getWidth()/charmanderSize][Charmander.getWidth()/charmanderSize];
+		for(int i = 0;i<Charmander.getWidth()/charmanderSize;i++)
+		{
+			for(int j = 0;j<Charmander.getHeight()/charmanderSize;j++)
+			{
+				CharmanderRegions[j][i] = new TextureRegion(Charmander, j*charmanderSize, i*charmanderSize, charmanderSize, charmanderSize);
+			}
+		}
+		
 		Charmander_1_R = new Animation(0.2f,Charmander_1_R_1, Charmander_1_R_2,Charmander_1_R_3);
 		Charmander_1_R.setPlayMode(Animation.PlayMode.LOOP_PINGPONG);
 		
-		Charmander_2_R_1 = new TextureRegion(Charmander, 0, 0, 106, 106);
-		Charmander_2_R_2 = new TextureRegion(Charmander, 106, 0, 106, 106);
-		Charmander_2_R_3 = new TextureRegion(Charmander, 212, 0, 106, 106);
+
 		Charmander_2_R = new Animation(0.2f,Charmander_2_R_1, Charmander_2_R_2,Charmander_2_R_3);
 		Charmander_2_R.setPlayMode(Animation.PlayMode.LOOP_PINGPONG);
 		
-		Charmander_3_R_1 = new TextureRegion(Charmander, 0, 106, 106, 106);
-		Charmander_3_R_2 =new TextureRegion(Charmander, 106, 106, 106, 106);
-		Charmander_3_R_3 = new TextureRegion(Charmander, 212, 106, 106, 106);
-		Charmander_3_R_1.flip(true, false);
-		Charmander_3_R_2.flip(true, false);
-		Charmander_3_R_3.flip(true, false);
+
 		Charmander_3_R = new Animation(0.2f,Charmander_3_R_1, Charmander_3_R_2,Charmander_3_R_3);
 		Charmander_3_R.setPlayMode(Animation.PlayMode.LOOP_PINGPONG);
 		
-		Charmander_4_R_1 = new TextureRegion(Charmander, 636, 0, 106, 106);
-		Charmander_4_R_2 = new TextureRegion(Charmander, 742, 0, 106, 106);
-		Charmander_4_R_3 = new TextureRegion(Charmander, 848, 0, 106, 106);
+
 		Charmander_4_R = new Animation(0.2f,Charmander_4_R_1, Charmander_4_R_2,Charmander_4_R_3);
 		Charmander_4_R.setPlayMode(Animation.PlayMode.LOOP_PINGPONG);
 		
-		Charmander_6_R_1 = new TextureRegion(Charmander, 636, 0, 106, 106);
-		Charmander_6_R_2 = new TextureRegion(Charmander, 742, 0, 106, 106);
-		Charmander_6_R_3 = new TextureRegion(Charmander, 848, 0, 106, 106);
-		Charmander_6_R_1.flip(true, false);
-		Charmander_6_R_2.flip(true, false);
-		Charmander_6_R_3.flip(true, false);
+
 		Charmander_6_R = new Animation(0.2f,Charmander_6_R_1, Charmander_6_R_2,Charmander_6_R_3);
 		Charmander_6_R.setPlayMode(Animation.PlayMode.LOOP_PINGPONG);
 		
-		Charmander_7_R_1 = new TextureRegion(Charmander, 318, 106, 106, 106);
-		Charmander_7_R_2 = new TextureRegion(Charmander, 424, 106, 106, 106);
-		Charmander_7_R_3 = new TextureRegion(Charmander, 530, 106, 106, 106);
+
 		Charmander_7_R = new Animation(0.2f,Charmander_7_R_1, Charmander_7_R_2,Charmander_7_R_3);
 		Charmander_7_R.setPlayMode(Animation.PlayMode.LOOP_PINGPONG);
-		
-		Charmander_8_R_1 = new TextureRegion(Charmander, 318, 0, 106, 106);
-		Charmander_8_R_2 = new TextureRegion(Charmander, 424, 0, 106, 106);
-		Charmander_8_R_3 = new TextureRegion(Charmander, 530, 0, 106, 106);
+
 		Charmander_8_R = new Animation(0.2f,Charmander_8_R_1,Charmander_8_R_2,Charmander_8_R_3);
 		Charmander_8_R.setPlayMode(Animation.PlayMode.LOOP_PINGPONG);
 		
-		Charmander_9_R_1 = new TextureRegion(Charmander, 318, 106, 106, 106);
-		Charmander_9_R_2 = new TextureRegion(Charmander, 424, 106, 106, 106);
-		Charmander_9_R_3 = new TextureRegion(Charmander, 530, 106, 106, 106);
-		Charmander_9_R_1.flip(true, false);
-		Charmander_9_R_2.flip(true, false);
-		Charmander_9_R_3.flip(true, false);
+
 		Charmander_9_R = new Animation(0.2f,Charmander_9_R_1, Charmander_9_R_2,Charmander_9_R_3);
 		Charmander_9_R.setPlayMode(Animation.PlayMode.LOOP_PINGPONG);
 		//todo hurt
@@ -497,6 +459,15 @@ public class AssetLoader {
 		AnimationMap.put(new PokemonState(4,7,Action.HURT), Charmander_7_H);
 		AnimationMap.put(new PokemonState(4,8,Action.HURT), Charmander_8_H);
 		AnimationMap.put(new PokemonState(4,9,Action.HURT), Charmander_9_H);
+		AnimationMap.put(new PokemonState(4,1,Action.IDLE), Charmander_1_I);
+		AnimationMap.put(new PokemonState(4,2,Action.IDLE), Charmander_2_I);
+		AnimationMap.put(new PokemonState(4,3,Action.IDLE), Charmander_3_I);
+		AnimationMap.put(new PokemonState(4,4,Action.IDLE), Charmander_4_I);
+		AnimationMap.put(new PokemonState(4,5,Action.IDLE), Charmander_5_I);
+		AnimationMap.put(new PokemonState(4,6,Action.IDLE), Charmander_6_I);
+		AnimationMap.put(new PokemonState(4,7,Action.IDLE), Charmander_7_I);
+		AnimationMap.put(new PokemonState(4,8,Action.IDLE), Charmander_8_I);
+		AnimationMap.put(new PokemonState(4,9,Action.IDLE), Charmander_9_I);
 		
 	}
 

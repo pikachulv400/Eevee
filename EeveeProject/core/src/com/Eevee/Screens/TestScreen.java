@@ -1,9 +1,10 @@
-package com.Eevee.Screens;
+/*package com.Eevee.Screens;
 
 import java.util.ArrayList;
 
 import com.Eevee.GameObjects.Pokemon;
 import com.Eevee.GameObjects.Projectile;
+import com.Eevee.GameWorld.GameWorld;
 import com.Eevee.PokemonData.Action;
 import com.Eevee.PokemonData.PokemonName;
 import com.Eevee.Util.AssetLoader;
@@ -13,11 +14,14 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.InputProcessor;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.Input.Keys;
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
+import com.badlogic.gdx.graphics.g3d.Shader;
+import com.badlogic.gdx.graphics.g3d.utils.ShaderProvider;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType;
 import com.badlogic.gdx.math.Ellipse;
@@ -33,12 +37,12 @@ public class TestScreen implements Screen {
 	private SpriteBatch spriteBatch = new SpriteBatch();
 	private float time;
 	Ellipse ellipse, pewpewEllipse;
-	private Pokemon charmander = new Pokemon(new Vector2(0, 0),new Vector2(0, 0), 0, 0, PokemonName.CHARMANDER);
-	private Pokemon bulbasaur = new Pokemon(new Vector2(50, 50), new Vector2(0, 0),106, 106, PokemonName.BULBASAUR);
+	private Pokemon charmander = new Pokemon(new Vector2(0, 0), 0, 0, PokemonName.CHARMANDER);
+	private Pokemon bulbasaur = new Pokemon(new Vector2(50, 50),106, 106, PokemonName.BULBASAUR);
 	private Projectile pewpew;
 	private OrthographicCamera camera;
 	ShapeRenderer shapeRenderer = new ShapeRenderer();
-	private InputHandler inputHandler = new InputHandler(bulbasaur, this);
+	private InputHandler inputHandler = new InputHandler(bulbasaur, new GameWorld());
 	private ArrayList<Projectile> projectiles = new ArrayList<Projectile>();
 	Sprite background;
 
@@ -52,7 +56,7 @@ public class TestScreen implements Screen {
 		Gdx.input.setInputProcessor(inputHandler);
 		background= new Sprite(AssetLoader.Background1);
 		background.setScale(2);
-		/*
+		
 		 * float screenWidth = Gdx.graphics.getWidth(); float screenHeight =
 		 * Gdx.graphics.getHeight(); float gameWidth = 136; float gameHeight =
 		 * screenHeight / (screenWidth / gameWidth); int midPointY = (int)
@@ -62,9 +66,10 @@ public class TestScreen implements Screen {
 		 * InputHandler(world, screenWidth / gameWidth, screenHeight /
 		 * gameHeight)); renderer = new GameRenderer(world, (int) gameHeight,
 		 * midPointY); world.setRenderer(renderer);
-		 */
+		 
 	}
 
+/*
 	@Override
 	public void render(float delta) {
 		inputHandler.getInputUpdater().update();
@@ -83,6 +88,7 @@ public class TestScreen implements Screen {
 		spriteBatch.begin();
 		background.draw(spriteBatch);
 		spriteBatch.end();
+
 		
 		shapeRenderer.begin(ShapeType.Filled);
 		shapeRenderer.setProjectionMatrix(camera.combined);
@@ -94,7 +100,7 @@ public class TestScreen implements Screen {
 		
 		shapeRenderer.begin(ShapeType.Filled);
 		shapeRenderer.setProjectionMatrix(camera.combined);
-		shapeRenderer.setColor(1, 0, 0, 1);
+		shapeRenderer.setColor(0, 0, 0, 1);
 		if (pewpew != null) {
 			if(pewpew.update(delta))
 			{
@@ -109,17 +115,24 @@ public class TestScreen implements Screen {
 		shapeRenderer.end();
 		
 		spriteBatch.setProjectionMatrix(camera.combined);
+		//spriteBatch.setBlendFunction(GL20.GL_SRC_ALPHA, GL20.GL_ONE);
 		spriteBatch.begin();
+		
 		UpdatePokemon(delta);
+		spriteBatch.setColor(Color.WHITE);
 		if(bulbasaur.getPosition().y>charmander.getPosition().y){
+			
 		spriteBatch.draw(bulbasaur.getCurrentAnimation().getKeyFrame(time),
 				bulbasaur.getPosition().x, bulbasaur.getPosition().y);
+		spriteBatch.end();
+		spriteBatch.begin();
+		spriteBatch.setColor(Color.PURPLE);
 		spriteBatch.draw(charmander.getCurrentAnimation().getKeyFrame(time),
 				charmander.getPosition().x, charmander.getPosition().y);
 		}
 		else
 		{
-			
+			spriteBatch.setColor(Color.WHITE);
 			spriteBatch.draw(charmander.getCurrentAnimation().getKeyFrame(time),
 					charmander.getPosition().x, charmander.getPosition().y);
 			spriteBatch.draw(bulbasaur.getCurrentAnimation().getKeyFrame(time),
@@ -128,10 +141,10 @@ public class TestScreen implements Screen {
 		spriteBatch.end();
 		
 
-		/*
+		
 		 * runTime += delta; world.update(delta); renderer.render(delta,
 		 * runTime);
-		 */
+		 
 	}
 
 	public void UpdatePokemon(float delta) {
@@ -183,4 +196,4 @@ public class TestScreen implements Screen {
 	}
 	
 
-}
+}*/

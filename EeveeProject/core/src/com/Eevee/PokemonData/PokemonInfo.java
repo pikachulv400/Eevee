@@ -12,10 +12,11 @@ public class PokemonInfo {
 	private int baseSpDef;
 	private int baseSpeed;
 	private PokemonType type;
+	private Evolution evolvesTo;
 
 	public PokemonInfo(int index, int baseHp, int basePp, int baseStamina,
 			int baseAtk, int baseDef, int baseSpAtk, int baseSpDef,
-			int baseSpeed, PokemonType type) {
+			int baseSpeed, PokemonType type,Evolution evolvesTo) {
 		super();
 		this.index = index;
 		this.baseHp = baseHp;
@@ -27,6 +28,7 @@ public class PokemonInfo {
 		this.baseSpDef = baseSpDef;
 		this.baseSpeed = baseSpeed;
 		this.type = type;
+		this.evolvesTo=evolvesTo;
 	}
 
 	public PokemonType getType() {
@@ -107,5 +109,13 @@ public class PokemonInfo {
 
 	public int getIndex() {
 		return index;
+	}
+
+	public Evolution getEvolvesTo() {
+		return evolvesTo;
+	}
+
+	public void setEvolvesTo(Evolution evolvesTo) {
+		this.evolvesTo = evolvesTo;
 	}
 }
