@@ -33,12 +33,12 @@ public class GameWorld {
 	}
 
 	public GameWorld() {
-		Player player1 = new Player(001,new InputHandler(new Pokemon(new Vector2(50, 50),106, 106, PokemonName.BULBASAUR), this));
-		Player player2 = new Player(002,new InputHandler(new Pokemon(new Vector2(150, 50),106, 106, PokemonName.BULBASAUR), this));
-		Player player3 = new Player(003,new InputHandler(new Pokemon(new Vector2(250, 50),106, 106, PokemonName.BULBASAUR), this));
-		Player player4 = new Player(004,new InputHandler(new Pokemon(new Vector2(350, 50),106, 106, PokemonName.BULBASAUR), this));
-		Player player5 = new Player(003,new InputHandler(new Pokemon(new Vector2(450, 50),106, 106, PokemonName.BULBASAUR), this));
-		Player player6 = new Player(004,new InputHandler(new Pokemon(new Vector2(550, 50),106, 106, PokemonName.BULBASAUR), this));
+		Player player1 = new Player(001,new InputHandler(new Pokemon(new Vector2(50, 50),106, 106, PokemonName.CHARMANDER), this));
+		Player player2 = new Player(002,new InputHandler(new Pokemon(new Vector2(150, 50),106, 106, PokemonName.CHARMANDER), this));
+		Player player3 = new Player(003,new InputHandler(new Pokemon(new Vector2(250, 50),106, 106, PokemonName.CHARMANDER), this));
+		Player player4 = new Player(004,new InputHandler(new Pokemon(new Vector2(350, 50),106, 106, PokemonName.CHARMANDER), this));
+		Player player5 = new Player(003,new InputHandler(new Pokemon(new Vector2(450, 50),106, 106, PokemonName.CHARMANDER), this));
+		Player player6 = new Player(004,new InputHandler(new Pokemon(new Vector2(550, 50),106, 106, PokemonName.CHARMANDER), this));
 
 		playerList.add(player1);
 		playerList.add(player2);

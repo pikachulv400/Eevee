@@ -80,10 +80,10 @@ private void updateCamera() {
 	private void renderPokemon(SpriteBatch batcher, ShapeRenderer shapeRenderer) {
 
 		// TODO Auto-generated method stub
-		 
+		float index = 0.25f;
 		for(Player player:world.getPlayerList())
 		{
-			batcher.setColor(0.2f,0.3f,1f,1);
+			batcher.setColor(index+=0.22f,index+=0.22f,index+=0.22f,1);
 			System.out.println(test);
 			Pokemon pokemon =player.getInput().getPokemon();
 			batcher.end();

@@ -4,7 +4,7 @@ import com.badlogic.gdx.math.Vector2;
 
 public enum BoundData {
 	BULBASAUR(new Vector2(15,13),75,40),
-	CHARMANDER(new Vector2(70,20),70,20),
+	CHARMANDER(new Vector2(19,13),70,40),
 	SQUIRTLE(new Vector2(70,20),70,20);
 	
 	private BoundData(Vector2 offset, int width, int height) {
