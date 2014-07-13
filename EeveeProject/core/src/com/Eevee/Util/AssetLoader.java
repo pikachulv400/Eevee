@@ -356,10 +356,7 @@ public class AssetLoader {
 		
 	}
 	private static void loadCharmander(){
-		
-	
-		
-		
+
 		Charmander = new Texture(Gdx.files.internal("data/CharmanderSprite.png"));
 		CharmanderRegions = new TextureRegion[Charmander.getWidth()/charmanderSize][Charmander.getWidth()/charmanderSize];
 		for(int i = 0;i<Charmander.getWidth()/charmanderSize;i++)
@@ -518,23 +515,29 @@ public class AssetLoader {
 		Charmander_8_M2.setPlayMode(Animation.PlayMode.LOOP);
 		Charmander_9_M2.setPlayMode(Animation.PlayMode.LOOP);
 		
-		/*
-		Charmander_1_M3 = new  Animation(0.2f,Charmander_1_M3_1);
 
-		Charmander_2_M3 = new  Animation(0.2f,Charmander_2_M3_1);
+		Charmander_1_M3 = new  Animation(0.2f,CharmanderRegions[4][6]);
 
-		Charmander_3_M3 = new  Animation(0.2f,Charmander_3_M3_1);
+		Charmander_2_M3 = new  Animation(0.2f,CharmanderRegions[1][6]);
 
-		Charmander_4_M3 = new  Animation(0.2f,Charmander_4_M3_1);
+		tempRegions[0] = new TextureRegion(CharmanderRegions[4][6]);
+		tempRegions[0].flip(true, false);
+		Charmander_3_M3 = new  Animation(0.2f,tempRegions[0]);
 
-		Charmander_6_M3 = new  Animation(0.2f,Charmander_6_M3_1);
+		Charmander_4_M3 = new  Animation(0.2f,CharmanderRegions[3][6]);
 
-		Charmander_7_M3 = new  Animation(0.2f,Charmander_7_M3_1);
+		tempRegions[0] = new TextureRegion(CharmanderRegions[3][6]);
+		tempRegions[0].flip(true, false);
+		Charmander_6_M3 = new  Animation(0.2f,tempRegions[0]);
 
-		Charmander_8_M3 = new  Animation(0.2f,Charmander_8_M3_1);
+		Charmander_7_M3 = new  Animation(0.2f,CharmanderRegions[5][6]);
 
-		Charmander_9_M3 = new  Animation(0.2f,Charmander_9_M3_1);
+		Charmander_8_M3 = new  Animation(0.2f,CharmanderRegions[2][6]);
 		
+		tempRegions[0] = new TextureRegion(CharmanderRegions[5][6]);
+		tempRegions[0].flip(true, false);
+		Charmander_9_M3 = new  Animation(0.2f,tempRegions[0]);
+		/*
 		Charmander_1_H_1 = new TextureRegion(Charmander, 207, 399, 106, 106);
 		Charmander_1_H_1.flip(true, false);
 		Charmander_1_H = new  Animation(0.2f,Charmander_1_H_1);
@@ -591,15 +594,15 @@ public class AssetLoader {
 		AnimationMap.put(new PokemonState(4,7,Action.MOVE2), Charmander_7_M2);
 		AnimationMap.put(new PokemonState(4,8,Action.MOVE2), Charmander_8_M2);
 		AnimationMap.put(new PokemonState(4,9,Action.MOVE2), Charmander_9_M2);
-		AnimationMap.put(new PokemonState(4,1,Action.MOVE3), Charmander_1_M1);
-		AnimationMap.put(new PokemonState(4,2,Action.MOVE3), Charmander_2_M1);
-		AnimationMap.put(new PokemonState(4,3,Action.MOVE3), Charmander_3_M1);
-		AnimationMap.put(new PokemonState(4,4,Action.MOVE3), Charmander_4_M1);
-		AnimationMap.put(new PokemonState(4,5,Action.MOVE3), Charmander_5_M1);
-		AnimationMap.put(new PokemonState(4,6,Action.MOVE3), Charmander_6_M1);
-		AnimationMap.put(new PokemonState(4,7,Action.MOVE3), Charmander_7_M1);
-		AnimationMap.put(new PokemonState(4,8,Action.MOVE3), Charmander_8_M1);
-		AnimationMap.put(new PokemonState(4,9,Action.MOVE3), Charmander_9_M1);
+		AnimationMap.put(new PokemonState(4,1,Action.MOVE3), Charmander_1_M3);
+		AnimationMap.put(new PokemonState(4,2,Action.MOVE3), Charmander_2_M3);
+		AnimationMap.put(new PokemonState(4,3,Action.MOVE3), Charmander_3_M3);
+		AnimationMap.put(new PokemonState(4,4,Action.MOVE3), Charmander_4_M3);
+		AnimationMap.put(new PokemonState(4,5,Action.MOVE3), Charmander_5_M3);
+		AnimationMap.put(new PokemonState(4,6,Action.MOVE3), Charmander_6_M3);
+		AnimationMap.put(new PokemonState(4,7,Action.MOVE3), Charmander_7_M3);
+		AnimationMap.put(new PokemonState(4,8,Action.MOVE3), Charmander_8_M3);
+		AnimationMap.put(new PokemonState(4,9,Action.MOVE3), Charmander_9_M3);
 		AnimationMap.put(new PokemonState(4,1,Action.IDLE), Charmander_1_I);
 		AnimationMap.put(new PokemonState(4,2,Action.IDLE), Charmander_2_I);
 		AnimationMap.put(new PokemonState(4,3,Action.IDLE), Charmander_3_I);

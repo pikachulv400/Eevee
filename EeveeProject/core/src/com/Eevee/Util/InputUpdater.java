@@ -103,6 +103,12 @@ public class InputUpdater {
 				myWorld.spawnProjectile(new Projectile(inputhandler.getPokemon().getPosition().cpy().add(BoundData.BULBASAUR.getOffset()),velocity.cpy().scl(6),0,0,1,1,1,400));
 				shouldAttack = 0;
 			}
+			if(inputhandler.useMove3)
+			{
+				inputhandler.getPokemon().setAction(Action.MOVE3);
+				myWorld.spawnProjectile(new Projectile(inputhandler.getPokemon().getPosition().cpy().add(BoundData.BULBASAUR.getOffset()),velocity.cpy().scl(6),0,0,1,1,1,400));
+				shouldAttack = 0;
+			}
 			
 		}
 		

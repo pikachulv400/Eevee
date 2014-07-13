@@ -12,7 +12,7 @@ import com.badlogic.gdx.InputProcessor;
 
 public class InputHandler implements InputProcessor {
 	protected boolean MovingUp= false, MovingDown= false, MovingLeft= false, MovingRight= false, Moving= false,
-			Attacking= false, isHit= false,useMove1= false,useMove2 = false;
+			Attacking= false, isHit= false,useMove1= false,useMove2 = false,useMove3= false,useMove4 = false;
 	private InputUpdater inputUpdater;
 
 	private GameWorld myWorld;
@@ -86,6 +86,10 @@ public class InputHandler implements InputProcessor {
 			Attacking = true;
 			useMove2=true;
 		}
+		if (keycode == Keys.U) {
+			Attacking = true;
+			useMove3=true;
+		}
 		if (keycode == Keys.H) {
 			isHit = true;
 		}
@@ -143,6 +147,11 @@ public class InputHandler implements InputProcessor {
 			Attacking = false;
 			inputUpdater.shouldMove = 0;
 			useMove2=false;
+		}
+		if (keycode == Keys.U) {
+			Attacking = false;
+			inputUpdater.shouldMove = 0;
+			useMove3=false;
 		}
 
 		if (keycode == Keys.H) {
