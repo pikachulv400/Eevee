@@ -537,27 +537,30 @@ public class AssetLoader {
 		tempRegions[0] = new TextureRegion(CharmanderRegions[5][6]);
 		tempRegions[0].flip(true, false);
 		Charmander_9_M3 = new  Animation(0.2f,tempRegions[0]);
-		/*
-		Charmander_1_H_1 = new TextureRegion(Charmander, 207, 399, 106, 106);
-		Charmander_1_H_1.flip(true, false);
-		Charmander_1_H = new  Animation(0.2f,Charmander_1_H_1);
-		Charmander_2_H_1 = new TextureRegion(Charmander, 278, 399, 106, 106);
-		Charmander_2_H = new  Animation(0.2f,Charmander_2_H_1);
-		Charmander_3_H_1 = new TextureRegion(Charmander, 207, 399, 106, 106);
-		Charmander_3_H = new  Animation(0.2f,Charmander_3_H_1);
-		Charmander_4_H_1 = new TextureRegion(Charmander, 138, 399, 106, 106);
-		Charmander_4_H_1.flip(true, false);
-		Charmander_4_H = new  Animation(0.2f,Charmander_4_H_1);
-		Charmander_6_H_1 = new TextureRegion(Charmander, 138, 399, 106, 106);
-		Charmander_6_H = new  Animation(0.2f,Charmander_6_H_1);
-		Charmander_7_H_1 = new TextureRegion(Charmander, 69, 399, 106, 106);
-		Charmander_7_H_1.flip(true, false);
-		Charmander_7_H = new  Animation(0.2f,Charmander_7_H_1);
-		Charmander_8_H_1 = new TextureRegion(Charmander, 0, 399, 106, 106);
-		Charmander_8_H = new  Animation(0.2f,Charmander_8_A_1);
-		Charmander_9_H_1 = new TextureRegion(Charmander, 69, 399, 106, 106);
-		Charmander_9_H = new  Animation(0.2f,Charmander_9_H_1);
-		*/
+		
+
+		Charmander_1_H = new  Animation(0.2f,CharmanderRegions[0][2]);
+		
+		Charmander_2_H = new  Animation(0.2f,CharmanderRegions[6][1]);
+		
+		tempRegions[0] = new TextureRegion(CharmanderRegions[0][2]);
+		tempRegions[0].flip(true, false);
+		Charmander_3_H = new  Animation(0.2f,tempRegions[0]);
+
+		Charmander_4_H = new  Animation(0.2f,CharmanderRegions[8][1]);
+
+		tempRegions[0] = new TextureRegion(CharmanderRegions[8][1]);
+		tempRegions[0].flip(true, false);
+		Charmander_6_H = new  Animation(0.2f,tempRegions[0]);
+
+		Charmander_7_H = new  Animation(0.2f,CharmanderRegions[1][2]);
+
+		Charmander_8_H = new  Animation(0.2f,CharmanderRegions[7][1]);
+		
+		tempRegions[0] = new TextureRegion(CharmanderRegions[1][2]);
+		tempRegions[0].flip(true, false);
+		Charmander_9_H = new  Animation(0.2f,tempRegions[0]);
+		
 		AnimationMap.put(new PokemonState(4,1,Action.RUN), Charmander_1_R);
 		AnimationMap.put(new PokemonState(4,2,Action.RUN), Charmander_2_R);
 		AnimationMap.put(new PokemonState(4,3,Action.RUN), Charmander_3_R);

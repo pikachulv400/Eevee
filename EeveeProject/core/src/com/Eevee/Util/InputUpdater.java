@@ -19,6 +19,7 @@ public class InputUpdater {
 		this.inputhandler=inputhandler;
 	}
 	public void update() {
+		
 		shouldMove++;
 		shouldAttack++;
 		shouldHit++;
@@ -94,19 +95,22 @@ public class InputUpdater {
 			if (inputhandler.useMove1)
 			{
 				inputhandler.getPokemon().setAction(Action.MOVE1);
-				myWorld.spawnProjectile(new Projectile(inputhandler.getPokemon().getPosition().cpy().add(BoundData.BULBASAUR.getOffset()),velocity,0,0,1,1,1,400));
+				inputhandler.getPokemon().setPp(inputhandler.getPokemon().getPp()-10);
+				myWorld.spawnProjectile(new Projectile(inputhandler.getPokemon().getPosition().cpy().add(PokemonBoundData.BULBASAUR.getOffset()).add(velocity.cpy().scl(50)),new Vector2(0,0),0,0,1,1,1,20));
 				shouldAttack = 0;
 			}
 			if(inputhandler.useMove2)
 			{
 				inputhandler.getPokemon().setAction(Action.MOVE2);
-				myWorld.spawnProjectile(new Projectile(inputhandler.getPokemon().getPosition().cpy().add(BoundData.BULBASAUR.getOffset()),velocity.cpy().scl(6),0,0,1,1,1,400));
+				inputhandler.getPokemon().setPp(inputhandler.getPokemon().getPp()-10);
+				myWorld.spawnProjectile(new Projectile(inputhandler.getPokemon().getPosition().cpy().add(PokemonBoundData.BULBASAUR.getOffset()),velocity.cpy().scl(6),0,0,1,1,1,400));
 				shouldAttack = 0;
 			}
 			if(inputhandler.useMove3)
 			{
 				inputhandler.getPokemon().setAction(Action.MOVE3);
-				myWorld.spawnProjectile(new Projectile(inputhandler.getPokemon().getPosition().cpy().add(BoundData.BULBASAUR.getOffset()),velocity.cpy().scl(6),0,0,1,1,1,400));
+				inputhandler.getPokemon().setPp(inputhandler.getPokemon().getPp()-10);
+				myWorld.spawnProjectile(new Projectile(inputhandler.getPokemon().getPosition().cpy().add(PokemonBoundData.BULBASAUR.getOffset()),velocity.cpy().scl(6),0,0,1,1,1,400));
 				shouldAttack = 0;
 			}
 			
@@ -123,13 +127,16 @@ public class InputUpdater {
 
 		if (shouldHit >= 80) { // cooldown
 			if (inputhandler.isHit) {
-		
+				inputhandler.getPokemon().setAction(Action.HURT);
 				shouldHit = 0;
+				
+				inputhandler.getPokemon().setHp(inputhandler.getPokemon().getHp()-10);
 
 			} else {
 
 			}
-		} else if (shouldHit >= skillDuration && shouldHit <= cooldown) { // skill
+		}
+			else if (shouldHit >= skillDuration && shouldHit <= cooldown) { // skill
 																			// duration
 			inputhandler.isHit=false;
 		} else {
@@ -141,5 +148,7 @@ public class InputUpdater {
 			inputhandler.getPokemon().setAction(Action.IDLE);
 			inputhandler.Attacking=false;
 		}
+		
+
 	}
 }

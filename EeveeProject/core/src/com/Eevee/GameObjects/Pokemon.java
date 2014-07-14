@@ -1,15 +1,18 @@
 package com.Eevee.GameObjects;
 
+import com.Eevee.GameWorld.GameWorld;
 import com.Eevee.MoveMachines.Move;
 import com.Eevee.PokemonData.Action;
 import com.Eevee.PokemonData.PokeDex;
 import com.Eevee.PokemonData.PokemonName;
 import com.Eevee.PokemonData.Status;
 import com.Eevee.Util.AssetLoader;
-import com.Eevee.Util.BoundData;
-import com.Eevee.Util.BoundMap;
+import com.Eevee.Util.PokemonBoundData;
+import com.Eevee.Util.PokemonBoundMap;
+import com.Eevee.Util.InputHandler;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.Animation;
+import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.math.Ellipse;
 import com.badlogic.gdx.math.Vector2;
 
@@ -31,13 +34,16 @@ public class Pokemon extends Entity {
 	private int spAtk;
 	private int spDef;
 	private int speed;
+	private int exp;
 	private boolean isAlive;
 	private Move move1;
 	private Move move2;
 	private Move move3;
 	private Move move4;
 	private Ellipse bound;
-	private BoundData bd;
+	private PokemonBoundData bd;
+	private int recoverRate = 50;
+	private int shouldRecover = 0;
 
 	public int getLevel() {
 		return level;
@@ -47,6 +53,9 @@ public class Pokemon extends Entity {
 		this.level = level;
 	}
 
+	public Vector2 getBoundOrigin(){
+		return new Vector2(bound.x+(bound.width/2),bound.y+(bound.height/2));
+	}
 	public Move getMove1() {
 		return move1;
 	}
@@ -92,6 +101,12 @@ public class Pokemon extends Entity {
 	}
 
 	public boolean update(float delta) {
+		shouldRecover++;
+		if(shouldRecover>=recoverRate && pp<maxPp)
+		{
+			pp+=1;
+			shouldRecover =0;
+		}
 		if (hp <= 0) {
 			isAlive = false;
 		}
@@ -126,10 +141,23 @@ public class Pokemon extends Entity {
 		} else {
 			this.setVelocity(new Vector2(0, 0));
 		}
+		if(bound.x+bound.width+this.getVelocity().x>GameWorld.getBackground().getX()+GameWorld.getBackground().getWidth()||
+		   bound.x+this.getVelocity().x<GameWorld.getBackground().getX())
+		{
+			this.getVelocity().x=0;
+		}
+		if(bound.y+bound.height+this.getVelocity().y>GameWorld.getBackground().getY()+GameWorld.getBackground().getHeight()||
+		   bound.y+this.getVelocity().y<GameWorld.getBackground().getY())
+		{
+			this.getVelocity().y=0;
+		}
 		this.getPosition().add(this.getVelocity());
 		bound.setPosition(super.getPosition().cpy().add(bd.getOffset()));
+
+
 		return isAlive;
 	}
+	
 
 	public void setName(PokemonName name) {
 		this.name = name;
@@ -263,7 +291,19 @@ public class Pokemon extends Entity {
 		this.status = Status.NORMAL;
 		this.action = Action.IDLE;
 		this.direction = 2;
-		bd = BoundMap.getBoundDataByPokemonName(name);
+		this.setExp(0);
+		this.maxHp = PokeDex.lookUpPokemon(name).getBaseHp();
+		this.hp = maxHp; // health point
+		this.maxPp = PokeDex.lookUpPokemon(name).getBasePp();
+		this.pp = maxPp; // energy point
+		this.maxStamina = PokeDex.lookUpPokemon(name).getBaseStamina() ;
+		this.stamina =maxStamina;
+		this.atk = PokeDex.lookUpPokemon(name).getBaseAtk();
+		this.def =  PokeDex.lookUpPokemon(name).getBaseDef();
+		this.spAtk =  PokeDex.lookUpPokemon(name).getBaseSpAtk();
+		this.spDef =  PokeDex.lookUpPokemon(name).getBaseSpDef();
+		this.speed =  PokeDex.lookUpPokemon(name).getBaseSpeed();
+		bd = PokemonBoundMap.getBoundDataByPokemonName(name);
 		Vector2 ellipsePosition = super.getPosition().cpy();
 		bound = new Ellipse(ellipsePosition, bd.getWidth(), bd.getHeight());
 	}
@@ -278,6 +318,7 @@ public class Pokemon extends Entity {
 		this.hp = hp;
 		this.maxPp = maxPp;
 		this.pp = pp;
+		this.setExp(0);
 		this.maxStamina = maxStamina;
 		this.stamina = stamina;
 		this.atk = atk;
@@ -289,7 +330,7 @@ public class Pokemon extends Entity {
 		this.status = Status.NORMAL;
 		this.action = Action.IDLE;
 		this.direction = 2;
-		bd = BoundMap.getBoundDataByPokemonName(name);
+		bd = PokemonBoundMap.getBoundDataByPokemonName(name);
 		Vector2 ellipsePosition = super.getPosition().cpy().add(bd.getOffset());
 		bound = new Ellipse(ellipsePosition, bd.getWidth(), bd.getHeight());
 	}
@@ -297,6 +338,20 @@ public class Pokemon extends Entity {
 	public Animation getCurrentAnimation() {
 		return AssetLoader.getAnimationFor(PokeDex.lookUpPokemon(name)
 				.getIndex(), direction, action);
+	}
+	private InputHandler inputHandler;
+	public void setInputhandler(InputHandler inputHandler) {
+		// TODO Auto-generated method stub
+		this.inputHandler = inputHandler;
+		
+	}
+
+	public int getExp() {
+		return exp;
+	}
+
+	public void setExp(int exp) {
+		this.exp = exp;
 	}
 
 }

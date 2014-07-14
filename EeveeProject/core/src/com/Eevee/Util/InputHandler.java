@@ -12,7 +12,8 @@ import com.badlogic.gdx.InputProcessor;
 
 public class InputHandler implements InputProcessor {
 	protected boolean MovingUp= false, MovingDown= false, MovingLeft= false, MovingRight= false, Moving= false,
-			Attacking= false, isHit= false,useMove1= false,useMove2 = false,useMove3= false,useMove4 = false;
+			Attacking= false, useMove1= false,useMove2 = false,useMove3= false,useMove4 = false;
+	public boolean isHit = false;
 	private InputUpdater inputUpdater;
 
 	private GameWorld myWorld;
@@ -28,6 +29,7 @@ public class InputHandler implements InputProcessor {
 
 	public InputHandler(Pokemon pokemon,GameWorld myWorld) {
 		this.pokemon = pokemon;
+		pokemon.setInputhandler(this);
 		this.inputUpdater = new InputUpdater(this,myWorld);
 		/*
 		 * this.myWorld = myWorld; myBird = myWorld.getBird();

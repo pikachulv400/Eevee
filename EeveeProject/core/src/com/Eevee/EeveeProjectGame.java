@@ -3,7 +3,8 @@ package com.Eevee;
 import com.Eevee.PokemonData.PokeDex;
 import com.Eevee.Screens.ArenaScreen;
 import com.Eevee.Util.AssetLoader;
-import com.Eevee.Util.BoundMap;
+import com.Eevee.Util.PokemonBoundMap;
+import com.Eevee.Util.ProjectileBoundMap;
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.GL20;
@@ -19,7 +20,8 @@ public class EeveeProjectGame extends Game {
 	public void create() {
 		AssetLoader.load();
 		PokeDex.load();
-		BoundMap.load();
+		PokemonBoundMap.load();
+		ProjectileBoundMap.load();
 		setScreen(new ArenaScreen());
 	}
 
