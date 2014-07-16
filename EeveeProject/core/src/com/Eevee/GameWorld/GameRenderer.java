@@ -118,6 +118,7 @@ public class GameRenderer {
 		// TODO Auto-generated method stub
 		shapeRenderer.setProjectionMatrix(camera.combined);
 		shapeRenderer.begin(ShapeType.Filled);
+		shapeRenderer.identity();
 		shapeRenderer.setColor(Color.BLACK);
 		shapeRenderer.ellipse(projectile.getBound().x, projectile.getBound().y,
 				projectile.getBound().width, projectile.getBound().height);
@@ -160,10 +161,27 @@ public class GameRenderer {
 	private void renderPokemonBound(Pokemon pokemon, ShapeRenderer shapeRenderer) {
 		shapeRenderer.setProjectionMatrix(camera.combined);
 		shapeRenderer.begin(ShapeType.Filled);
+		shapeRenderer.identity();
 		shapeRenderer.setColor(Color.BLACK);
-		shapeRenderer.ellipse(pokemon.getBound().x, pokemon.getBound().y,
+//		System.out.println("pokemon.getBound().x+(pokemon.getBound().width/2) ="+ pokemon.getBound().x+(pokemon.getBound().width/2));
+//		System.out.println("pokemon.getBound().x+(pokemon.getBound().height/2) ="+pokemon.getBound().y+(pokemon.getBound().height/2));
+		shapeRenderer.translate( pokemon.getBound().x+(pokemon.getBound().width/2), pokemon.getBound().y+(pokemon.getBound().height/2), 0);
+	//	shapeRenderer.rotate(0,0,1,90);
+		shapeRenderer.ellipse(-(pokemon.getBound().width/2), -(pokemon.getBound().height/2),
 				pokemon.getBound().width, pokemon.getBound().height);
 		shapeRenderer.end();
+//		
+//		shapeRenderer.setProjectionMatrix(camera.combined);
+//		shapeRenderer.begin(ShapeType.Filled);
+//		shapeRenderer.identity();
+//		shapeRenderer.setColor(Color.BLACK);
+//		System.out.println("pokemon.getBound().x+(pokemon.getBound().width/2) ="+ pokemon.getBound().x+(pokemon.getBound().width/2));
+//		System.out.println("pokemon.getBound().x+(pokemon.getBound().height/2) ="+pokemon.getBound().y+(pokemon.getBound().height/2));
+//		shapeRenderer.translate(pokemon.getBound().x+(pokemon.getBound().width/2), pokemon.getBound().y+(pokemon.getBound().height/2), 0);
+//		shapeRenderer.rotate(0,0,1,50);
+//		shapeRenderer.ellipse(pokemon.getBound().x, pokemon.getBound().y,
+//				pokemon.getBound().width, pokemon.getBound().height);
+//		shapeRenderer.end();
 	}
 
 	private void renderBackground(SpriteBatch batcher) {

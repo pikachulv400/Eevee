@@ -26,6 +26,7 @@ public class InputUpdater {
 		if (shouldMove >= 8) {
 			if(inputhandler.Moving)
 			{
+				
 				inputhandler.getPokemon().setAction(Action.RUN);
 			}
 			if (inputhandler.MovingUp) {

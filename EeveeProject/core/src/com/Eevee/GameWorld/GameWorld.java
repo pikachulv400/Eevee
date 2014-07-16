@@ -2,6 +2,8 @@ package com.Eevee.GameWorld;
 
 import java.awt.Graphics2D;
 import java.awt.Shape;
+import java.awt.geom.AffineTransform;
+import java.awt.geom.Area;
 import java.awt.geom.Ellipse2D;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -46,7 +48,7 @@ public class GameWorld {
 		Player player1 = new Player(001, new InputHandler(new Pokemon(
 				new Vector2(300, 300), 106, 106, PokemonName.CHARMANDER), this));
 		Player player2 = new Player(002, new InputHandler(new Pokemon(
-				new Vector2(300, 300), 106, 106, PokemonName.BULBASAUR), this));
+				new Vector2(300, 300), 106, 106, PokemonName.CHARMANDER), this));
 		Player player3 = new Player(003, new InputHandler(new Pokemon(
 				new Vector2(300, 50), 106, 106, PokemonName.CHARMANDER), this));
 		Player player4 = new Player(004, new InputHandler(new Pokemon(
@@ -187,6 +189,21 @@ public class GameWorld {
 					Ellipse e2 = projectile.getBound();
 					Shape r1 = new Ellipse2D.Float(e1.x, e1.y, e1.width, e1.height);
 					Shape r2 = new Ellipse2D.Float(e2.x,e2.y,e2.width,e2.height);
+					
+//					 AffineTransform af = new AffineTransform();
+//					  af.rotate(Math.PI/2, e1.x+(e1.width/2), e1.y+(e1.height/2));//rotate 45 degrees around ax, ay
+//
+//					  AffineTransform bf = new AffineTransform();
+//					  bf.rotate(Math.PI/2, e2.x+(e2.width/2), e2.y+(e2.height/2));//rotate 45 degrees around bx, by
+//
+//					 Area ra = new Area(r1).createTransformedArea(af);//ra is the rotated a, a is unchanged
+//					 Area rb = new Area(r2).createTransformedArea(bf);//rb is the rotated b, b is unchanged
+//					  if(CollisionDetector.testIntersection(ra,rb)){
+//						  if (projectile.getFromPlayerID() != player.getID()) {
+//						  System.out.println("HIHI");
+//						  }
+//					  }
+					  
 					if (CollisionDetector.testIntersection(r1,r2)) {
 						if (projectile.getFromPlayerID() != player.getID()) {
 							System.out.println(projectile.getBound().x);
