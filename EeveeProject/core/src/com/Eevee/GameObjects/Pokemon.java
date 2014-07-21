@@ -336,9 +336,6 @@ public class Pokemon extends Entity {
 	}
 
 	public Animation getCurrentAnimation() {
-		System.out.println(name);
-		System.out.println(direction);
-		System.out.println(action);
 		return AssetLoader.getAnimationFor(PokeDex.lookUpPokemon(name)
 				.getIndex(), direction, action);
 	}

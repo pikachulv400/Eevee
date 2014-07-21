@@ -3,6 +3,8 @@ package com.Eevee.Util;
 import java.util.HashMap;
 
 import com.Eevee.PokemonData.Action;
+import com.Eevee.PokemonData.PokeDex;
+import com.Eevee.PokemonData.PokemonName;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Preferences;
 import com.badlogic.gdx.audio.Sound;
@@ -20,6 +22,7 @@ public class AssetLoader {
 	public static int charmanderSize = 106;
 	public static int squirtleSize = 105;
 	public static Texture Background1;
+	public static TextureRegion[] MinimapIcons = new TextureRegion[10];
 	public static TextureRegion[][] BulbasaurRegions;
 	public static TextureRegion[][] CharmanderRegions;
 	public static TextureRegion[][] SquirtleRegions;
@@ -199,9 +202,12 @@ public class AssetLoader {
 		Bulbasaur_1_R.setPlayMode(Animation.PlayMode.LOOP);
 		Bulbasaur_1_I = new Animation(0.2f,BulbasaurRegions[4][1]);
 		
+		
+		
 		Bulbasaur_2_R = new Animation(0.2f,BulbasaurRegions[0][0],  BulbasaurRegions[1][0],BulbasaurRegions[2][0]);
 		Bulbasaur_2_R.setPlayMode(Animation.PlayMode.LOOP);
 		Bulbasaur_2_I = new Animation(0.2f,BulbasaurRegions[2][0]);
+		MinimapIcons[1] = BulbasaurRegions[2][0];
 		
 		tempRegions[0] = new TextureRegion(BulbasaurRegions[2][1]);
 		tempRegions[1] = new TextureRegion(BulbasaurRegions[3][1]);
@@ -396,10 +402,12 @@ public class AssetLoader {
 		Charmander_1_R.setPlayMode(Animation.PlayMode.LOOP_PINGPONG);
 		Charmander_1_I = new Animation(0.2f,CharmanderRegions[1][1]);
 		
+		
 
 		Charmander_2_R = new Animation(0.2f,CharmanderRegions[0][0], CharmanderRegions[1][0],CharmanderRegions[2][0]);
 		Charmander_2_R.setPlayMode(Animation.PlayMode.LOOP_PINGPONG);
 		Charmander_2_I = new Animation(0.2f,CharmanderRegions[1][0]);
+		MinimapIcons[4] = CharmanderRegions[1][0];
 		
 		tempRegions[0] = new TextureRegion(CharmanderRegions[0][1]);
 		tempRegions[1] = new TextureRegion(CharmanderRegions[1][1]);
@@ -662,6 +670,7 @@ public class AssetLoader {
 		Squirtle_2_R = new Animation(0.2f,SquirtleRegions[0][0],  SquirtleRegions[1][0],SquirtleRegions[2][0]);
 		Squirtle_2_R.setPlayMode(Animation.PlayMode.LOOP_PINGPONG);
 		Squirtle_2_I = new Animation(0.2f,SquirtleRegions[2][0]);
+		MinimapIcons[7] = SquirtleRegions[2][0];
 		
 		tempRegions[0] = new TextureRegion(SquirtleRegions[2][1]);
 		tempRegions[1] = new TextureRegion(SquirtleRegions[3][1]);
@@ -1028,6 +1037,14 @@ public class AssetLoader {
 
 		font.dispose();
 		shadow.dispose();*/
+	}
+
+
+
+	public static TextureRegion getMiniMapIconFor(PokemonName name) {
+		// TODO Auto-generated method stub
+
+		return MinimapIcons[PokeDex.lookUpPokemon(name).getIndex()];
 	}
 
 }

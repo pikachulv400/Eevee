@@ -18,6 +18,14 @@ public class InputHandler implements InputProcessor {
 
 	private GameWorld myWorld;
 	private Pokemon pokemon;
+	private int KeysUp =Keys.UP;
+	private int KeysDown =Keys.DOWN;
+	private int KeysLeft =Keys.LEFT;
+	private int KeysRight =Keys.RIGHT;
+	private int KeysMove1 =Keys.Q;
+	private int KeysMove2 =Keys.W;
+	private int KeysMove3 =Keys.E;
+	private int KeysMove4 =Keys.R;
 
 	/*
 	 * private List<SimpleButton> menuButtons;
@@ -57,42 +65,42 @@ public class InputHandler implements InputProcessor {
 	@Override
 	public boolean keyDown(int keycode) {
 
-		if (keycode == Keys.UP) {
+		if (keycode == KeysUp) {
 
 			MovingUp = true;
 			MovingDown = false;
 			Moving = true;
 		}
-		if (keycode == Keys.LEFT) {
+		if (keycode == KeysLeft) {
 			MovingLeft = true;
 			MovingRight = false;
 			Moving = true;
 		}
-		if (keycode == Keys.DOWN) {
+		if (keycode == KeysDown) {
 			MovingDown = true;
 			MovingUp = false;
 			Moving = true;
 		}
-		if (keycode == Keys.RIGHT) {
+		if (keycode == KeysRight) {
 			MovingRight = true;
 			MovingLeft = false;
 			Moving = true;
 
 		}
 		// Can now use Space Bar to play the game
-		if (keycode == Keys.NUM_1) {
+		if (keycode == KeysMove1) {
 			Attacking = true;
 			useMove1=true;
 		}
-		if (keycode == Keys.NUM_2) {
+		if (keycode == KeysMove2) {
 			Attacking = true;
 			useMove2=true;
 		}
-		if (keycode == Keys.U) {
+		if (keycode == KeysMove3) {
 			Attacking = true;
 			useMove3=true;
 		}
-		if (keycode == Keys.H) {
+		if (keycode == KeysMove4) {
 			isHit = true;
 		}
 
@@ -102,7 +110,7 @@ public class InputHandler implements InputProcessor {
 	@Override
 	public boolean keyUp(int keycode) {
 
-		if (keycode == Keys.UP) {
+		if (keycode == KeysUp) {
 			MovingUp = false;
 			inputUpdater.shouldMove = 0;
 			if(!MovingUp&&!MovingDown&&!MovingLeft&&!MovingRight)
@@ -111,7 +119,7 @@ public class InputHandler implements InputProcessor {
 				Moving = false;
 			}
 		}
-		if (keycode == Keys.LEFT) {
+		if (keycode == KeysLeft) {
 			MovingLeft = false;
 			inputUpdater.shouldMove = 0;
 			if(!MovingUp&&!MovingDown&&!MovingLeft&&!MovingRight)
@@ -120,7 +128,7 @@ public class InputHandler implements InputProcessor {
 				Moving = false;
 			}
 		}
-		if (keycode == Keys.DOWN) {
+		if (keycode == KeysDown) {
 			MovingDown = false;
 			inputUpdater.shouldMove = 0;
 			if(!MovingUp&&!MovingDown&&!MovingLeft&&!MovingRight)
@@ -129,7 +137,7 @@ public class InputHandler implements InputProcessor {
 				Moving = false;
 			}
 		}
-		if (keycode == Keys.RIGHT) {
+		if (keycode == KeysRight) {
 			MovingRight = false;
 			inputUpdater.shouldMove = 0;
 			if(!MovingUp&&!MovingDown&&!MovingLeft&&!MovingRight)
@@ -140,23 +148,23 @@ public class InputHandler implements InputProcessor {
 		}
 		
 		// Can now use Space Bar to play the game
-		if (keycode == Keys.NUM_1) {
+		if (keycode == KeysMove1) {
 			Attacking = false;
 			inputUpdater.shouldMove = 0;
 			useMove1=false;
 		}
-		if (keycode == Keys.NUM_2) {
+		if (keycode == KeysMove2) {
 			Attacking = false;
 			inputUpdater.shouldMove = 0;
 			useMove2=false;
 		}
-		if (keycode == Keys.U) {
+		if (keycode == KeysMove3) {
 			Attacking = false;
 			inputUpdater.shouldMove = 0;
 			useMove3=false;
 		}
 
-		if (keycode == Keys.H) {
+		if (keycode == KeysMove4) {
 			isHit = false;
 
 			inputUpdater.shouldHit = 0;
