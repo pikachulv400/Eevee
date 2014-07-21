@@ -15,12 +15,14 @@ import com.badlogic.gdx.graphics.g2d.TextureRegion;
 
 public class AssetLoader {
 
-	public static Texture Bulbasaur,Charmander;
+	public static Texture Bulbasaur,Charmander,Squirtle;
 	public static int bulbasaurSize = 105;
 	public static int charmanderSize = 106;
+	public static int squirtleSize = 105;
 	public static Texture Background1;
 	public static TextureRegion[][] BulbasaurRegions;
 	public static TextureRegion[][] CharmanderRegions;
+	public static TextureRegion[][] SquirtleRegions;
 	public static TextureRegion tempRegions[] = new TextureRegion[10];
 
 	public static Animation Bulbasaur_1_R, Bulbasaur_2_R, Bulbasaur_3_R,
@@ -52,7 +54,26 @@ public class AssetLoader {
 			Charmander_7_H, Charmander_8_H, Charmander_9_H,
 			Charmander_1_I, Charmander_2_I,
 			Charmander_3_I, Charmander_4_I, Charmander_5_I, Charmander_6_I,
-			Charmander_7_I, Charmander_8_I, Charmander_9_I;// Charmander
+			Charmander_7_I, Charmander_8_I, Charmander_9_I,// Charmander
+	
+			Squirtle_1_R, Squirtle_2_R, Squirtle_3_R, Squirtle_4_R,
+			Squirtle_5_R, Squirtle_6_R, Squirtle_7_R, Squirtle_8_R,
+			Squirtle_9_R, 
+			Squirtle_1_M1, Squirtle_2_M1, Squirtle_3_M1,
+			Squirtle_4_M1, Squirtle_5_M1, Squirtle_6_M1, Squirtle_7_M1,
+			Squirtle_8_M1, Squirtle_9_M1,
+			Squirtle_1_M2, Squirtle_2_M2, Squirtle_3_M2,
+			Squirtle_4_M2, Squirtle_5_M2, Squirtle_6_M2, Squirtle_7_M2,
+			Squirtle_8_M2, Squirtle_9_M2,
+			Squirtle_1_M3, Squirtle_2_M3, Squirtle_3_M3,
+			Squirtle_4_M3, Squirtle_5_M3, Squirtle_6_M3, Squirtle_7_M3,
+			Squirtle_8_M3, Squirtle_9_M3,
+			Squirtle_1_H, Squirtle_2_H,
+			Squirtle_3_H, Squirtle_4_H, Squirtle_5_H, Squirtle_6_H,
+			Squirtle_7_H, Squirtle_8_H, Squirtle_9_H,
+			Squirtle_1_I, Squirtle_2_I,
+			Squirtle_3_I, Squirtle_4_I, Squirtle_5_I, Squirtle_6_I,
+			Squirtle_7_I, Squirtle_8_I, Squirtle_9_I;// Squirtle
 	private static HashMap<PokemonState,Animation> AnimationMap = new HashMap<PokemonState,Animation>();
 
 	/*
@@ -67,6 +88,8 @@ public class AssetLoader {
 	public static void load() {
 		loadBulbasaur();
 		loadCharmander();
+		loadSquirtle();
+		//loadSquirtleBoss();
 		Background1 = new Texture(Gdx.files.internal("data/background1.png"));
 		/*logoTexture.setFilter(TextureFilter.Linear, TextureFilter.Linear);
 
@@ -153,6 +176,8 @@ public class AssetLoader {
 		}*/
 	}
 	
+
+
 	public static Animation getAnimationFor(int index,int direction,Action action)
 	{
 		return AnimationMap.get(new PokemonState(index,direction,action));
@@ -616,6 +641,372 @@ public class AssetLoader {
 		AnimationMap.put(new PokemonState(4,8,Action.IDLE), Charmander_8_I);
 		AnimationMap.put(new PokemonState(4,9,Action.IDLE), Charmander_9_I);
 		
+	}
+	
+	private static void loadSquirtle() {
+		// TODO Auto-generated method stub
+		Squirtle = new Texture(Gdx.files.internal("data/SquirtleBossSprite3.png"));
+		SquirtleRegions = new TextureRegion[Squirtle.getWidth()/squirtleSize][Squirtle.getWidth()/squirtleSize];
+		for(int i = 0;i<Squirtle.getWidth()/squirtleSize;i++)
+		{
+			for(int j = 0;j<Squirtle.getHeight()/squirtleSize;j++)
+			{
+				SquirtleRegions[j][i] = new TextureRegion(Squirtle, j*squirtleSize, i*squirtleSize, squirtleSize, squirtleSize);
+			}
+		}
+
+		Squirtle_1_R = new Animation(0.2f,SquirtleRegions[2][1], SquirtleRegions[3][1],SquirtleRegions[4][1]);
+		Squirtle_1_R.setPlayMode(Animation.PlayMode.LOOP_PINGPONG);
+		Squirtle_1_I = new Animation(0.2f,SquirtleRegions[4][1]);
+		
+		Squirtle_2_R = new Animation(0.2f,SquirtleRegions[0][0],  SquirtleRegions[1][0],SquirtleRegions[2][0]);
+		Squirtle_2_R.setPlayMode(Animation.PlayMode.LOOP_PINGPONG);
+		Squirtle_2_I = new Animation(0.2f,SquirtleRegions[2][0]);
+		
+		tempRegions[0] = new TextureRegion(SquirtleRegions[2][1]);
+		tempRegions[1] = new TextureRegion(SquirtleRegions[3][1]);
+		tempRegions[2] = new TextureRegion(SquirtleRegions[4][1]);
+		tempRegions[0].flip(true, false);
+		tempRegions[1].flip(true, false);
+		tempRegions[2].flip(true, false);
+		Squirtle_3_R = new Animation(0.2f,tempRegions[0], tempRegions[1],tempRegions[2]);
+		Squirtle_3_R.setPlayMode(Animation.PlayMode.LOOP_PINGPONG);
+		Squirtle_3_I = new Animation(0.2f,tempRegions[2]);
+		
+		Squirtle_4_R = new Animation(0.2f,SquirtleRegions[6][0], SquirtleRegions[0][1], SquirtleRegions[1][1]);
+		Squirtle_4_R.setPlayMode(Animation.PlayMode.LOOP_PINGPONG);
+		Squirtle_4_I = new Animation(0.2f,SquirtleRegions[1][1]);
+		
+		tempRegions[0] = new TextureRegion(SquirtleRegions[6][0]);
+		tempRegions[1] = new TextureRegion(SquirtleRegions[0][1]);
+		tempRegions[2] = new TextureRegion(SquirtleRegions[1][1]);
+		tempRegions[0].flip(true, false);
+		tempRegions[1].flip(true, false);
+		tempRegions[2].flip(true, false);
+		Squirtle_6_R = new Animation(0.2f,tempRegions[0], tempRegions[1],tempRegions[2]);
+		Squirtle_6_R.setPlayMode(Animation.PlayMode.LOOP_PINGPONG);
+		Squirtle_6_I = new Animation(0.2f,tempRegions[2]);
+		
+		Squirtle_7_R = new Animation(0.2f,SquirtleRegions[5][1], SquirtleRegions[6][1],SquirtleRegions[0][2]);
+		Squirtle_7_R.setPlayMode(Animation.PlayMode.LOOP_PINGPONG);
+		Squirtle_7_I = new Animation(0.2f,SquirtleRegions[0][2]);
+		
+		Squirtle_8_R = new Animation(0.2f,SquirtleRegions[3][0], SquirtleRegions[4][0],SquirtleRegions[5][0]);
+		Squirtle_8_R.setPlayMode(Animation.PlayMode.LOOP_PINGPONG);
+		Squirtle_8_I = new Animation(0.2f,SquirtleRegions[5][0]);
+		
+		tempRegions[0] = new TextureRegion(SquirtleRegions[5][1]);
+		tempRegions[1] = new TextureRegion(SquirtleRegions[6][1]);
+		tempRegions[2] = new TextureRegion(SquirtleRegions[0][2]);
+		tempRegions[0].flip(true, false);
+		tempRegions[1].flip(true, false);
+		tempRegions[2].flip(true, false);
+		Squirtle_9_R = new Animation(0.2f,tempRegions[0], tempRegions[1] ,tempRegions[2]);
+		Squirtle_9_R.setPlayMode(Animation.PlayMode.LOOP_PINGPONG);
+		Squirtle_9_I = new Animation(0.2f,tempRegions[2]);
+		
+		Squirtle_1_M1 = new  Animation(0.2f,SquirtleRegions[1][4],SquirtleRegions[2][4],SquirtleRegions[3][4]);
+		Squirtle_1_M1.setPlayMode(Animation.PlayMode.LOOP);
+		
+		Squirtle_2_M1 = new  Animation(0.2f,SquirtleRegions[6][2],SquirtleRegions[0][3],SquirtleRegions[1][3]);
+		Squirtle_2_M1.setPlayMode(Animation.PlayMode.LOOP);
+		
+		tempRegions[0] = new TextureRegion(SquirtleRegions[1][4]);
+		tempRegions[1] = new TextureRegion(SquirtleRegions[2][4]);
+		tempRegions[2] = new TextureRegion(SquirtleRegions[3][4]);
+		tempRegions[0].flip(true, false);
+		tempRegions[1].flip(true, false);
+		tempRegions[2].flip(true, false);
+		Squirtle_3_M1 = new  Animation(0.2f,tempRegions[0],tempRegions[1],tempRegions[2]);
+		Squirtle_3_M1.setPlayMode(Animation.PlayMode.LOOP);
+		
+		Squirtle_4_M1 = new  Animation(0.2f,SquirtleRegions[5][3],SquirtleRegions[6][3],SquirtleRegions[0][4]);
+		Squirtle_4_M1.setPlayMode(Animation.PlayMode.LOOP);
+		
+		tempRegions[0] = new TextureRegion(SquirtleRegions[5][3]);
+		tempRegions[1] = new TextureRegion(SquirtleRegions[6][3]);
+		tempRegions[2] = new TextureRegion(SquirtleRegions[0][4]);
+		tempRegions[0].flip(true, false);
+		tempRegions[1].flip(true, false);
+		tempRegions[2].flip(true, false);
+		Squirtle_6_M1 = new  Animation(0.2f,tempRegions[0],tempRegions[1],tempRegions[2]);
+		Squirtle_6_M1.setPlayMode(Animation.PlayMode.LOOP);
+		
+		Squirtle_7_M1 = new  Animation(0.2f,SquirtleRegions[4][4],SquirtleRegions[5][4],SquirtleRegions[6][4]);
+		Squirtle_7_M1.setPlayMode(Animation.PlayMode.LOOP);
+		
+		Squirtle_8_M1 = new  Animation(0.2f,SquirtleRegions[2][3],SquirtleRegions[3][3],SquirtleRegions[4][3]);
+		Squirtle_8_M1.setPlayMode(Animation.PlayMode.LOOP);
+		
+		tempRegions[0] = new TextureRegion(SquirtleRegions[4][4]);
+		tempRegions[1] = new TextureRegion(SquirtleRegions[5][4]);
+		tempRegions[2] = new TextureRegion(SquirtleRegions[6][4]);
+		tempRegions[0].flip(true, false);
+		tempRegions[1].flip(true, false);
+		tempRegions[2].flip(true, false);
+		Squirtle_9_M1 = new  Animation(0.2f,tempRegions[0],tempRegions[1],tempRegions[2]);
+		Squirtle_9_M1.setPlayMode(Animation.PlayMode.LOOP);
+		
+		Squirtle_1_M2 = new  Animation(0.2f,SquirtleRegions[0][5],SquirtleRegions[1][5],SquirtleRegions[2][5],SquirtleRegions[3][5],SquirtleRegions[4][5]);
+		Squirtle_1_M2.setPlayMode(Animation.PlayMode.LOOP);
+				
+		Squirtle_1_H = new  Animation(0.2f,SquirtleRegions[4][2]);
+		Squirtle_2_H = new  Animation(0.2f,SquirtleRegions[1][2]);
+		tempRegions[0] = new TextureRegion(SquirtleRegions[4][2]);
+		tempRegions[0].flip(true, false);
+		Squirtle_3_H = new  Animation(0.2f,tempRegions[0]);
+
+		Squirtle_4_H = new  Animation(0.2f,SquirtleRegions[3][2]);
+		tempRegions[0] = new TextureRegion(SquirtleRegions[3][2]);
+		tempRegions[0].flip(true, false);
+		Squirtle_6_H = new  Animation(0.2f,tempRegions[0]);
+
+		
+		Squirtle_7_H = new  Animation(0.2f,SquirtleRegions[5][2]);
+		
+		Squirtle_8_H = new  Animation(0.2f,SquirtleRegions[2][2]);
+		
+		tempRegions[0] = new TextureRegion(SquirtleRegions[5][2]);
+		tempRegions[0].flip(true, false);
+		Squirtle_9_H = new  Animation(0.2f,tempRegions[0]);
+		
+		AnimationMap.put(new PokemonState(7,1,Action.RUN), Squirtle_1_R);
+		AnimationMap.put(new PokemonState(7,2,Action.RUN), Squirtle_2_R);
+		AnimationMap.put(new PokemonState(7,3,Action.RUN), Squirtle_3_R);
+		AnimationMap.put(new PokemonState(7,4,Action.RUN), Squirtle_4_R);
+		AnimationMap.put(new PokemonState(7,6,Action.RUN), Squirtle_6_R);
+		AnimationMap.put(new PokemonState(7,7,Action.RUN), Squirtle_7_R);
+		AnimationMap.put(new PokemonState(7,8,Action.RUN), Squirtle_8_R);
+		AnimationMap.put(new PokemonState(7,9,Action.RUN), Squirtle_9_R);
+		AnimationMap.put(new PokemonState(7,1,Action.MOVE1), Squirtle_1_M1);
+		AnimationMap.put(new PokemonState(7,2,Action.MOVE1), Squirtle_2_M1);
+		AnimationMap.put(new PokemonState(7,3,Action.MOVE1), Squirtle_3_M1);
+		AnimationMap.put(new PokemonState(7,4,Action.MOVE1), Squirtle_4_M1);
+		AnimationMap.put(new PokemonState(7,6,Action.MOVE1), Squirtle_6_M1);
+		AnimationMap.put(new PokemonState(7,7,Action.MOVE1), Squirtle_7_M1);
+		AnimationMap.put(new PokemonState(7,8,Action.MOVE1), Squirtle_8_M1);
+		AnimationMap.put(new PokemonState(7,9,Action.MOVE1), Squirtle_9_M1);
+		AnimationMap.put(new PokemonState(7,1,Action.MOVE2), Squirtle_1_M2);
+		AnimationMap.put(new PokemonState(7,2,Action.MOVE2), Squirtle_1_M2);
+		AnimationMap.put(new PokemonState(7,3,Action.MOVE2), Squirtle_1_M2);
+		AnimationMap.put(new PokemonState(7,4,Action.MOVE2), Squirtle_1_M2);
+		AnimationMap.put(new PokemonState(7,6,Action.MOVE2), Squirtle_1_M2);
+		AnimationMap.put(new PokemonState(7,7,Action.MOVE2), Squirtle_1_M2);
+		AnimationMap.put(new PokemonState(7,8,Action.MOVE2), Squirtle_1_M2);
+		AnimationMap.put(new PokemonState(7,9,Action.MOVE2), Squirtle_1_M2);
+		AnimationMap.put(new PokemonState(7,1,Action.HURT), Squirtle_1_H);
+		AnimationMap.put(new PokemonState(7,2,Action.HURT), Squirtle_2_H);
+		AnimationMap.put(new PokemonState(7,3,Action.HURT), Squirtle_3_H);
+		AnimationMap.put(new PokemonState(7,4,Action.HURT), Squirtle_4_H);
+		AnimationMap.put(new PokemonState(7,6,Action.HURT), Squirtle_6_H);
+		AnimationMap.put(new PokemonState(7,7,Action.HURT), Squirtle_7_H);
+		AnimationMap.put(new PokemonState(7,8,Action.HURT), Squirtle_8_H);
+		AnimationMap.put(new PokemonState(7,9,Action.HURT), Squirtle_9_H);
+		AnimationMap.put(new PokemonState(7,1,Action.IDLE), Squirtle_1_I);
+		AnimationMap.put(new PokemonState(7,2,Action.IDLE), Squirtle_2_I);
+		AnimationMap.put(new PokemonState(7,3,Action.IDLE), Squirtle_3_I);
+		AnimationMap.put(new PokemonState(7,4,Action.IDLE), Squirtle_4_I);
+		AnimationMap.put(new PokemonState(7,6,Action.IDLE), Squirtle_6_I);
+		AnimationMap.put(new PokemonState(7,7,Action.IDLE), Squirtle_7_I);
+		AnimationMap.put(new PokemonState(7,8,Action.IDLE), Squirtle_8_I);
+		AnimationMap.put(new PokemonState(7,9,Action.IDLE), Squirtle_9_I);
+	}
+	
+	private static void loadSquirtleBoss() {
+		// TODO Auto-generated method stub
+		Squirtle = new Texture(Gdx.files.internal("data/SquirtleBossSprite.png"));
+		SquirtleRegions = new TextureRegion[Squirtle.getWidth()/squirtleSize][Squirtle.getWidth()/squirtleSize];
+		for(int i = 0;i<Squirtle.getWidth()/squirtleSize;i++)
+		{
+			for(int j = 0;j<Squirtle.getHeight()/squirtleSize;j++)
+			{
+				SquirtleRegions[j][i] = new TextureRegion(Squirtle, j*squirtleSize, i*squirtleSize, squirtleSize, squirtleSize);
+			}
+		}
+
+		Squirtle_1_R = new Animation(0.2f,SquirtleRegions[2][1], SquirtleRegions[3][1],SquirtleRegions[4][1]);
+		Squirtle_1_R.setPlayMode(Animation.PlayMode.LOOP_PINGPONG);
+		Squirtle_1_I = new Animation(0.2f,SquirtleRegions[4][1]);
+		
+		Squirtle_2_R = new Animation(0.2f,SquirtleRegions[0][0],  SquirtleRegions[1][0],SquirtleRegions[2][0]);
+		Squirtle_2_R.setPlayMode(Animation.PlayMode.LOOP_PINGPONG);
+		Squirtle_2_I = new Animation(0.2f,SquirtleRegions[2][0]);
+		
+		tempRegions[0] = new TextureRegion(SquirtleRegions[2][1]);
+		tempRegions[1] = new TextureRegion(SquirtleRegions[3][1]);
+		tempRegions[2] = new TextureRegion(SquirtleRegions[4][1]);
+		tempRegions[0].flip(true, false);
+		tempRegions[1].flip(true, false);
+		tempRegions[2].flip(true, false);
+		Squirtle_3_R = new Animation(0.2f,tempRegions[0], tempRegions[1],tempRegions[2]);
+		Squirtle_3_R.setPlayMode(Animation.PlayMode.LOOP_PINGPONG);
+		Squirtle_3_I = new Animation(0.2f,tempRegions[2]);
+		
+		Squirtle_4_R = new Animation(0.2f,SquirtleRegions[6][0], SquirtleRegions[0][1], SquirtleRegions[1][1]);
+		Squirtle_4_R.setPlayMode(Animation.PlayMode.LOOP_PINGPONG);
+		Squirtle_4_I = new Animation(0.2f,SquirtleRegions[1][1]);
+		
+		tempRegions[0] = new TextureRegion(SquirtleRegions[6][0]);
+		tempRegions[1] = new TextureRegion(SquirtleRegions[0][1]);
+		tempRegions[2] = new TextureRegion(SquirtleRegions[1][1]);
+		tempRegions[0].flip(true, false);
+		tempRegions[1].flip(true, false);
+		tempRegions[2].flip(true, false);
+		Squirtle_6_R = new Animation(0.2f,tempRegions[0], tempRegions[1],tempRegions[2]);
+		Squirtle_6_R.setPlayMode(Animation.PlayMode.LOOP_PINGPONG);
+		Squirtle_6_I = new Animation(0.2f,tempRegions[2]);
+		
+		Squirtle_7_R = new Animation(0.2f,SquirtleRegions[5][1], SquirtleRegions[6][1],SquirtleRegions[0][2]);
+		Squirtle_7_R.setPlayMode(Animation.PlayMode.LOOP_PINGPONG);
+		Squirtle_7_I = new Animation(0.2f,SquirtleRegions[0][2]);
+		
+		Squirtle_8_R = new Animation(0.2f,SquirtleRegions[3][0], SquirtleRegions[4][0],SquirtleRegions[5][0]);
+		Squirtle_8_R.setPlayMode(Animation.PlayMode.LOOP_PINGPONG);
+		Squirtle_8_I = new Animation(0.2f,SquirtleRegions[5][0]);
+		
+		tempRegions[0] = new TextureRegion(SquirtleRegions[5][1]);
+		tempRegions[1] = new TextureRegion(SquirtleRegions[6][1]);
+		tempRegions[2] = new TextureRegion(SquirtleRegions[0][2]);
+		tempRegions[0].flip(true, false);
+		tempRegions[1].flip(true, false);
+		tempRegions[2].flip(true, false);
+		Squirtle_9_R = new Animation(0.2f,tempRegions[0], tempRegions[1] ,tempRegions[2]);
+		Squirtle_9_R.setPlayMode(Animation.PlayMode.LOOP_PINGPONG);
+		Squirtle_9_I = new Animation(0.2f,tempRegions[2]);
+		
+		Squirtle_1_M1 = new  Animation(0.2f,SquirtleRegions[5][3],SquirtleRegions[6][3]);
+		Squirtle_1_M1.setPlayMode(Animation.PlayMode.LOOP);
+		
+		Squirtle_2_M1 = new  Animation(0.2f,SquirtleRegions[6][2],SquirtleRegions[0][3]);
+		Squirtle_2_M1.setPlayMode(Animation.PlayMode.LOOP);
+		
+		tempRegions[0] = new TextureRegion(SquirtleRegions[5][3]);
+		tempRegions[1] = new TextureRegion(SquirtleRegions[6][3]);
+		tempRegions[0].flip(true, false);
+		tempRegions[1].flip(true, false);
+		Squirtle_3_M1 = new  Animation(0.2f,tempRegions[0],tempRegions[1]);
+		Squirtle_3_M1.setPlayMode(Animation.PlayMode.LOOP);
+		
+		Squirtle_4_M1 = new  Animation(0.2f,SquirtleRegions[3][3],SquirtleRegions[4][3]);
+		Squirtle_4_M1.setPlayMode(Animation.PlayMode.LOOP);
+		
+		tempRegions[0] = new TextureRegion(SquirtleRegions[3][3]);
+		tempRegions[1] = new TextureRegion(SquirtleRegions[4][3]);
+		tempRegions[0].flip(true, false);
+		tempRegions[1].flip(true, false);
+		Squirtle_6_M1 = new  Animation(0.2f,tempRegions[0],tempRegions[1]);
+		Squirtle_6_M1.setPlayMode(Animation.PlayMode.LOOP);
+		
+		Squirtle_7_M1 = new  Animation(0.2f,SquirtleRegions[0][4],SquirtleRegions[1][4]);
+		Squirtle_7_M1.setPlayMode(Animation.PlayMode.LOOP);
+		
+		Squirtle_8_M1 = new  Animation(0.2f,SquirtleRegions[1][3],SquirtleRegions[2][3]);
+		Squirtle_8_M1.setPlayMode(Animation.PlayMode.LOOP);
+		
+		tempRegions[0] = new TextureRegion(SquirtleRegions[0][4]);
+		tempRegions[1] = new TextureRegion(SquirtleRegions[1][4]);
+		tempRegions[0].flip(true, false);
+		tempRegions[1].flip(true, false);
+		Squirtle_9_M1 = new  Animation(0.2f,tempRegions[0],tempRegions[1]);
+		Squirtle_9_M1.setPlayMode(Animation.PlayMode.LOOP);
+		
+		Squirtle_1_M2 = new  Animation(0.2f,SquirtleRegions[1][5],SquirtleRegions[2][5]);
+		Squirtle_1_M2.setPlayMode(Animation.PlayMode.LOOP);
+		
+		Squirtle_2_M2 = new  Animation(0.2f,SquirtleRegions[2][4],SquirtleRegions[3][4]);
+		Squirtle_2_M2.setPlayMode(Animation.PlayMode.LOOP);
+		
+		tempRegions[0] = new TextureRegion(SquirtleRegions[1][5]);
+		tempRegions[1] = new TextureRegion(SquirtleRegions[2][5]);
+		tempRegions[0].flip(true, false);
+		tempRegions[1].flip(true, false);
+		Squirtle_3_M2 = new  Animation(0.2f,tempRegions[0],tempRegions[1]);
+		Squirtle_3_M2.setPlayMode(Animation.PlayMode.LOOP);
+		
+		Squirtle_4_M2 = new  Animation(0.2f,SquirtleRegions[6][4],SquirtleRegions[0][5]);
+		Squirtle_4_M2.setPlayMode(Animation.PlayMode.LOOP);
+		
+		tempRegions[0] = new TextureRegion(SquirtleRegions[6][4]);
+		tempRegions[1] = new TextureRegion(SquirtleRegions[0][5]);
+		tempRegions[0].flip(true, false);
+		tempRegions[1].flip(true, false);
+		Squirtle_6_M2 = new  Animation(0.2f,tempRegions[0],tempRegions[1]);
+		Squirtle_6_M2.setPlayMode(Animation.PlayMode.LOOP);
+		
+		Squirtle_7_M2 = new  Animation(0.2f,SquirtleRegions[3][5],SquirtleRegions[4][5]);
+		Squirtle_7_M2.setPlayMode(Animation.PlayMode.LOOP);
+		
+		Squirtle_8_M2 = new  Animation(0.2f,SquirtleRegions[4][4],SquirtleRegions[5][4]);
+		Squirtle_8_M2.setPlayMode(Animation.PlayMode.LOOP);
+		
+		tempRegions[0] = new TextureRegion(SquirtleRegions[3][5]);
+		tempRegions[1] = new TextureRegion(SquirtleRegions[4][5]);
+		tempRegions[0].flip(true, false);
+		tempRegions[1].flip(true, false);
+		Squirtle_9_M2 = new  Animation(0.2f,tempRegions[0],tempRegions[1]);
+		Squirtle_9_M2.setPlayMode(Animation.PlayMode.LOOP);
+		
+				
+		Squirtle_1_H = new  Animation(0.2f,SquirtleRegions[4][2]);
+		Squirtle_2_H = new  Animation(0.2f,SquirtleRegions[1][2]);
+		tempRegions[0] = new TextureRegion(SquirtleRegions[4][2]);
+		tempRegions[0].flip(true, false);
+		Squirtle_3_H = new  Animation(0.2f,tempRegions[0]);
+
+		Squirtle_4_H = new  Animation(0.2f,SquirtleRegions[3][2]);
+		tempRegions[0] = new TextureRegion(SquirtleRegions[3][2]);
+		tempRegions[0].flip(true, false);
+		Squirtle_6_H = new  Animation(0.2f,tempRegions[0]);
+
+		
+		Squirtle_7_H = new  Animation(0.2f,SquirtleRegions[5][2]);
+		
+		Squirtle_8_H = new  Animation(0.2f,SquirtleRegions[2][2]);
+		
+		tempRegions[0] = new TextureRegion(SquirtleRegions[5][2]);
+		tempRegions[0].flip(true, false);
+		Squirtle_9_H = new  Animation(0.2f,tempRegions[0]);
+		
+		AnimationMap.put(new PokemonState(7,1,Action.RUN), Squirtle_1_R);
+		AnimationMap.put(new PokemonState(7,2,Action.RUN), Squirtle_2_R);
+		AnimationMap.put(new PokemonState(7,3,Action.RUN), Squirtle_3_R);
+		AnimationMap.put(new PokemonState(7,4,Action.RUN), Squirtle_4_R);
+		AnimationMap.put(new PokemonState(7,6,Action.RUN), Squirtle_6_R);
+		AnimationMap.put(new PokemonState(7,7,Action.RUN), Squirtle_7_R);
+		AnimationMap.put(new PokemonState(7,8,Action.RUN), Squirtle_8_R);
+		AnimationMap.put(new PokemonState(7,9,Action.RUN), Squirtle_9_R);
+		AnimationMap.put(new PokemonState(7,1,Action.MOVE1), Squirtle_1_M1);
+		AnimationMap.put(new PokemonState(7,2,Action.MOVE1), Squirtle_2_M1);
+		AnimationMap.put(new PokemonState(7,3,Action.MOVE1), Squirtle_3_M1);
+		AnimationMap.put(new PokemonState(7,4,Action.MOVE1), Squirtle_4_M1);
+		AnimationMap.put(new PokemonState(7,6,Action.MOVE1), Squirtle_6_M1);
+		AnimationMap.put(new PokemonState(7,7,Action.MOVE1), Squirtle_7_M1);
+		AnimationMap.put(new PokemonState(7,8,Action.MOVE1), Squirtle_8_M1);
+		AnimationMap.put(new PokemonState(7,9,Action.MOVE1), Squirtle_9_M1);
+		AnimationMap.put(new PokemonState(7,1,Action.MOVE2), Squirtle_1_M2);
+		AnimationMap.put(new PokemonState(7,2,Action.MOVE2), Squirtle_2_M2);
+		AnimationMap.put(new PokemonState(7,3,Action.MOVE2), Squirtle_3_M2);
+		AnimationMap.put(new PokemonState(7,4,Action.MOVE2), Squirtle_4_M2);
+		AnimationMap.put(new PokemonState(7,6,Action.MOVE2), Squirtle_6_M2);
+		AnimationMap.put(new PokemonState(7,7,Action.MOVE2), Squirtle_7_M2);
+		AnimationMap.put(new PokemonState(7,8,Action.MOVE2), Squirtle_8_M2);
+		AnimationMap.put(new PokemonState(7,9,Action.MOVE2), Squirtle_9_M2);
+		AnimationMap.put(new PokemonState(7,1,Action.HURT), Squirtle_1_H);
+		AnimationMap.put(new PokemonState(7,2,Action.HURT), Squirtle_2_H);
+		AnimationMap.put(new PokemonState(7,3,Action.HURT), Squirtle_3_H);
+		AnimationMap.put(new PokemonState(7,4,Action.HURT), Squirtle_4_H);
+		AnimationMap.put(new PokemonState(7,6,Action.HURT), Squirtle_6_H);
+		AnimationMap.put(new PokemonState(7,7,Action.HURT), Squirtle_7_H);
+		AnimationMap.put(new PokemonState(7,8,Action.HURT), Squirtle_8_H);
+		AnimationMap.put(new PokemonState(7,9,Action.HURT), Squirtle_9_H);
+		AnimationMap.put(new PokemonState(7,1,Action.IDLE), Squirtle_1_I);
+		AnimationMap.put(new PokemonState(7,2,Action.IDLE), Squirtle_2_I);
+		AnimationMap.put(new PokemonState(7,3,Action.IDLE), Squirtle_3_I);
+		AnimationMap.put(new PokemonState(7,4,Action.IDLE), Squirtle_4_I);
+		AnimationMap.put(new PokemonState(7,6,Action.IDLE), Squirtle_6_I);
+		AnimationMap.put(new PokemonState(7,7,Action.IDLE), Squirtle_7_I);
+		AnimationMap.put(new PokemonState(7,8,Action.IDLE), Squirtle_8_I);
+		AnimationMap.put(new PokemonState(7,9,Action.IDLE), Squirtle_9_I);
 	}
 
 	/*

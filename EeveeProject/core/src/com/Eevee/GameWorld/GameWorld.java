@@ -46,17 +46,17 @@ public class GameWorld {
 
 	public GameWorld() {
 		Player player1 = new Player(001, new InputHandler(new Pokemon(
-				new Vector2(300, 300), 106, 106, PokemonName.CHARMANDER), this));
+				new Vector2(300, 400), 106, 106, PokemonName.CHARMANDER), this));
 		Player player2 = new Player(002, new InputHandler(new Pokemon(
-				new Vector2(300, 300), 106, 106, PokemonName.CHARMANDER), this));
+				new Vector2(300, 300), 106, 106, PokemonName.SQUIRTLE), this));
 		Player player3 = new Player(003, new InputHandler(new Pokemon(
-				new Vector2(300, 50), 106, 106, PokemonName.CHARMANDER), this));
+				new Vector2(300, 50), 106, 106, PokemonName.BULBASAUR), this));
 		Player player4 = new Player(004, new InputHandler(new Pokemon(
 				new Vector2(50, 300), 106, 106, PokemonName.CHARMANDER), this));
 		Player player5 = new Player(003, new InputHandler(new Pokemon(
-				new Vector2(450, 50), 106, 106, PokemonName.CHARMANDER), this));
+				new Vector2(450, 50), 106, 106, PokemonName.SQUIRTLE), this));
 		Player player6 = new Player(004, new InputHandler(new Pokemon(
-				new Vector2(550, 50), 106, 106, PokemonName.CHARMANDER), this));
+				new Vector2(550, 50), 106, 106, PokemonName.BULBASAUR), this));
 
 		player1.getInput().getPokemon().setDirection(9);
 		player2.getInput().getPokemon().setDirection(1);
@@ -64,10 +64,10 @@ public class GameWorld {
 		player4.getInput().getPokemon().setDirection(3);
 		playerList.add(player1);
 		playerList.add(player2);
-		//playerList.add(player3);
-		//playerList.add(player4);
-		// playerList.add(player5);
-		// playerList.add(player6);
+		playerList.add(player3);
+		playerList.add(player4);
+		 playerList.add(player5);
+		 playerList.add(player6);
 
 		background = new Sprite(AssetLoader.Background1);
 		// background.setScale(2);

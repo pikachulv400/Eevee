@@ -57,34 +57,34 @@ public class InputHandler implements InputProcessor {
 	@Override
 	public boolean keyDown(int keycode) {
 
-		if (keycode == Keys.W) {
+		if (keycode == Keys.UP) {
 
 			MovingUp = true;
 			MovingDown = false;
 			Moving = true;
 		}
-		if (keycode == Keys.A) {
+		if (keycode == Keys.LEFT) {
 			MovingLeft = true;
 			MovingRight = false;
 			Moving = true;
 		}
-		if (keycode == Keys.S) {
+		if (keycode == Keys.DOWN) {
 			MovingDown = true;
 			MovingUp = false;
 			Moving = true;
 		}
-		if (keycode == Keys.D) {
+		if (keycode == Keys.RIGHT) {
 			MovingRight = true;
 			MovingLeft = false;
 			Moving = true;
 
 		}
 		// Can now use Space Bar to play the game
-		if (keycode == Keys.J) {
+		if (keycode == Keys.NUM_1) {
 			Attacking = true;
 			useMove1=true;
 		}
-		if (keycode == Keys.K) {
+		if (keycode == Keys.NUM_2) {
 			Attacking = true;
 			useMove2=true;
 		}
@@ -102,7 +102,7 @@ public class InputHandler implements InputProcessor {
 	@Override
 	public boolean keyUp(int keycode) {
 
-		if (keycode == Keys.W) {
+		if (keycode == Keys.UP) {
 			MovingUp = false;
 			inputUpdater.shouldMove = 0;
 			if(!MovingUp&&!MovingDown&&!MovingLeft&&!MovingRight)
@@ -111,7 +111,7 @@ public class InputHandler implements InputProcessor {
 				Moving = false;
 			}
 		}
-		if (keycode == Keys.A) {
+		if (keycode == Keys.LEFT) {
 			MovingLeft = false;
 			inputUpdater.shouldMove = 0;
 			if(!MovingUp&&!MovingDown&&!MovingLeft&&!MovingRight)
@@ -120,7 +120,7 @@ public class InputHandler implements InputProcessor {
 				Moving = false;
 			}
 		}
-		if (keycode == Keys.S) {
+		if (keycode == Keys.DOWN) {
 			MovingDown = false;
 			inputUpdater.shouldMove = 0;
 			if(!MovingUp&&!MovingDown&&!MovingLeft&&!MovingRight)
@@ -129,7 +129,7 @@ public class InputHandler implements InputProcessor {
 				Moving = false;
 			}
 		}
-		if (keycode == Keys.D) {
+		if (keycode == Keys.RIGHT) {
 			MovingRight = false;
 			inputUpdater.shouldMove = 0;
 			if(!MovingUp&&!MovingDown&&!MovingLeft&&!MovingRight)
@@ -140,12 +140,12 @@ public class InputHandler implements InputProcessor {
 		}
 		
 		// Can now use Space Bar to play the game
-		if (keycode == Keys.J) {
+		if (keycode == Keys.NUM_1) {
 			Attacking = false;
 			inputUpdater.shouldMove = 0;
 			useMove1=false;
 		}
-		if (keycode == Keys.K) {
+		if (keycode == Keys.NUM_2) {
 			Attacking = false;
 			inputUpdater.shouldMove = 0;
 			useMove2=false;
